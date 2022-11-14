@@ -7,7 +7,7 @@ interface AppConfigType {
 export const AppConfig: AppConfigType = {
   mysql: {
     type: 'mysql',
-    host: '43.142.50.90',
+    host: '127.0.0.1',
     port: 3306,
     username: 'root',
     password: '123456',
