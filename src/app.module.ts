@@ -1,16 +1,21 @@
-import { MiddlewareConsumer, Module, UseFilters } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from './middleware/logger/logger.middleware';
 import { UserModule } from './modules/user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppConfig } from './config/app.config';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { HttpExceptionFilter } from './filter/http-exception/http-exception.filter';
 import { MapModule } from './modules/map/map.module';
+import { RolesGuard } from './modules/auth/role-guard.service';
 
 @Module({
-  imports: [UserModule, MapModule, TypeOrmModule.forRoot(AppConfig.mysql)],
+  imports: [
+    UserModule,
+    MapModule,
+    TypeOrmModule.forRoot(AppConfig.mysql),
+  ],
   controllers: [AppController],
   providers: [
     AppService,
@@ -18,6 +23,10 @@ import { MapModule } from './modules/map/map.module';
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
     },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    }
   ],
 })
 export class AppModule {

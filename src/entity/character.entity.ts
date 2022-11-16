@@ -1,4 +1,5 @@
-import { IsEmpty, IsIn, Length } from 'class-validator';
+import { IsNotEmpty, IsIn, Length, Matches } from 'class-validator';
+import Regular from 'src/utils/regular';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicAttrEntity } from './base/basic_attr.entity';
 
@@ -14,6 +15,10 @@ export default class CharacterEntity extends BasicAttrEntity {
    * 角色名
    */
   @Column()
+  @IsNotEmpty()
+  @Matches(Regular.IS_CHINESE_ENGLISH_NUMBERS, {
+    message: '角色名只能是中文、英文、数字',
+  })
   @Length(2, 10, { message: '角色名长度为2-10个字符' })
   name: string;
 
@@ -65,9 +70,9 @@ export default class CharacterEntity extends BasicAttrEntity {
   @Column({
     type: 'tinyint',
   })
+  @IsNotEmpty()
   @IsIn([1, 2], {
     message: '性别只能是1:男 2:女',
   })
-  @IsEmpty({ message: '性别不能为空' })
-  sex?: number;
+  sex: number;
 }

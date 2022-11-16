@@ -2,7 +2,7 @@ import { HttpStatus } from '@nestjs/common';
 
 export default class HttpError extends Error {
   constructor(
-    public error: Error,
+    public error: Error | string,
     public code: number = 500,
     public status: HttpStatus = HttpStatus.OK,
   ) {

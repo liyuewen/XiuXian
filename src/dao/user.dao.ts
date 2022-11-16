@@ -21,6 +21,24 @@ export default class UserDao {
     }
   }
 
+  async updateUser(
+    id: number,
+    values: Partial<Omit<UserEntity, 'id' | 'username' | 'password'>>,
+  ) {
+    const dataSource = this.dataSource;
+    try {
+      const user = await dataSource
+        .createQueryBuilder()
+        .update(UserEntity)
+        .set(values)
+        .where('id = :id', { id })
+        .execute();
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async login(username: string, password: string) {
     const dataSource = this.dataSource;
     try {

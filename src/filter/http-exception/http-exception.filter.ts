@@ -1,5 +1,4 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
-import ErrorStackParser from 'error-stack-parser';
 import { Request, Response } from 'express';
 import HttpError from 'src/common/error/http-error';
 import ResultFormat from 'src/common/format/result';
@@ -10,10 +9,8 @@ export class HttpExceptionFilter<T> implements ExceptionFilter {
   catch(exception: T, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
-    const request = ctx.getRequest<Request>();
     let error: HttpError;
     let status: number;
-
     if (exception instanceof HttpError) {
       error = exception;
       status = error.status;

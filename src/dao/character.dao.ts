@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import ThrowError from 'src/common/error/throw-error';
 import CharacterEntity from 'src/entity/character.entity';
 import { DataSource } from 'typeorm';
 
@@ -17,7 +18,7 @@ export default class CharacterDao {
         .execute();
       return character;
     } catch (error) {
-      throw error;
+      throw new ThrowError(`CharacterDao:createCharacter ${error}`);
     }
   }
 }
