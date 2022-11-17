@@ -1,10 +1,11 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BasicTimeEntity } from './base/basic_time.entity';
 
 /**
  * 角色装备穿戴表
  */
 @Entity()
-export default class WearEntity {
+export default class WearEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

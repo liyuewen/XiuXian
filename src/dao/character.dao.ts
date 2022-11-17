@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import ThrowError from 'src/common/error/throw-error';
+import ThrowError from 'src/common/error/throw_error';
 import CharacterEntity from 'src/entity/character.entity';
 import { DataSource } from 'typeorm';
 

@@ -96,11 +96,18 @@ export default class Utils {
 
   /**
    * 用于返回当前实体的验证错误第一条错误信息
-   * @param object 实体
-   * @returns 
+   * @param object 当前数据对象
+   * @param model 当前数据对象的实体类
+   * @returns
    */
-  static async validateError(object: object) {
-    const val = await validate(object);
+  static async validateError(object: object, model: new () => object) {
+    const validateModel = new model();
+    for (const key in object) {
+      if (Object.prototype.hasOwnProperty.call(object, key)) {
+        validateModel[key] = object[key];
+      }
+    }
+    const val = await validate(validateModel);
     if (val.length > 0) {
       let validation = val[0];
       let errors = Object.values(validation.constraints);

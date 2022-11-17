@@ -6,7 +6,7 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import { Request } from 'express';
-import HttpError from 'src/common/error/http-error';
+import HttpError from 'src/common/error/http_error';
 import { NoAuth } from 'src/decorator/auth';
 import { HttpExceptionFilter } from 'src/filter/http-exception/http-exception.filter';
 import { UserService } from './user.service';

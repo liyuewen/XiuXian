@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import LoggerCommon from './common/logger/logger.service';
-import { NestLoggerService } from './common/logger/nest-logger.service';
+import { NestLoggerService } from './common/logger/nest_logger.service';
 import Redis from './common/redis';
 import { HttpFormatInterceptor } from './interceptor/http-format/http-format.interceptor';
 

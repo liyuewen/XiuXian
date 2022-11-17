@@ -8,7 +8,7 @@ import {
   Req,
   UseFilters,
 } from '@nestjs/common';
-import HttpError from 'src/common/error/http-error';
+import HttpError from 'src/common/error/http_error';
 import { HttpExceptionFilter } from 'src/filter/http-exception/http-exception.filter';
 import { MapService } from './map.service';
 

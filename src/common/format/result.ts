@@ -1,6 +1,6 @@
 import ErrorStackParser from 'error-stack-parser';
 import Utils from 'src/utils/utils';
-import HttpError from '../error/http-error';
+import HttpError from '../error/http_error';
 
 export interface Result<T = any> {
   statusCode: number;

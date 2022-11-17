@@ -30,6 +30,16 @@ export default class UserEntity {
   last_login_time: Date;
 
   /**
+   * 0:普通用户
+   * 1:管理员
+   */
+  @Column({
+    type: 'enum',
+    enum: ['0', '1'],
+  })
+  create_goods: string;
+
+  /**
    * 注册地ip
    */
   @Column({

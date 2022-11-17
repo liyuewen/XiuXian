@@ -8,12 +8,14 @@ import { AppConfig } from './config/app.config';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { HttpExceptionFilter } from './filter/http-exception/http-exception.filter';
 import { MapModule } from './modules/map/map.module';
-import { RolesGuard } from './modules/auth/role-guard.service';
+import { RolesGuard } from './modules/auth/role_guard.service';
+import { GoodsModule } from './modules/goods/goods.module';
 
 @Module({
   imports: [
     UserModule,
     MapModule,
+    GoodsModule,
     TypeOrmModule.forRoot(AppConfig.mysql),
   ],
   controllers: [AppController],
@@ -26,7 +28,7 @@ import { RolesGuard } from './modules/auth/role-guard.service';
     {
       provide: APP_GUARD,
       useClass: RolesGuard,
-    }
+    },
   ],
 })
 export class AppModule {

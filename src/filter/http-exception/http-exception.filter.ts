@@ -1,6 +1,6 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
 import { Request, Response } from 'express';
-import HttpError from 'src/common/error/http-error';
+import HttpError from 'src/common/error/http_error';
 import ResultFormat from 'src/common/format/result';
 import LoggerCommon from 'src/common/logger/logger.service';
 

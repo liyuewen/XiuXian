@@ -6,8 +6,8 @@ import UserDao from 'src/dao/user.dao';
 import CharacterDao from 'src/dao/character.dao';
 import CharacterEntity from 'src/entity/character.entity';
 import Redis from 'src/common/redis';
-import HttpError from 'src/common/error/http-error';
-
+import HttpError from 'src/common/error/http_error';
+// root uf854adqw666
 @Injectable()
 export class UserService {
   constructor(private userDao: UserDao, private characterDao: CharacterDao) {}
@@ -29,6 +29,7 @@ export class UserService {
       common_ip: ip,
       character_id: 0,
       last_login_time: date,
+      create_goods: '0',
     });
     if (saveUser) {
       return true;
@@ -46,8 +47,14 @@ export class UserService {
         last_login_ip: ip,
         last_login_time: date,
       });
+      const userRedis = await Redis.get(user.id);
+      if (Utils.isExists(userRedis)) {
+        await Redis.del(userRedis.token);
+        await Redis.del(user.id);
+      }
       const token = Utils.token(user.id);
       await Redis.set(token, user.id, 60 * 60 * 24 * 7);
+      await Redis.set(user.id, { ...user, token: token }, 60 * 60 * 24 * 7);
       return {
         token: token,
       };
@@ -56,16 +63,12 @@ export class UserService {
   }
 
   async createCharacter(name: string, sex: number) {
-    const obj = new CharacterEntity();
-    obj.name = name;
-    obj.sex = sex;
-    await Utils.validateError(obj);
+    await Utils.validateError({ name, sex }, CharacterEntity);
     await this.characterDao.createCharacter({
-      name: obj.name,
-      equipment_id: '',
+      name: name,
       xw_level: 0,
       kj_level: 0,
-      sex: obj.sex,
+      sex: sex,
       attack: 10,
       defense: 5,
       hp: 100,
@@ -77,6 +80,7 @@ export class UserService {
       xw_exp: 0,
       kj_exp: 0,
       soul_exp: 0,
+      knapsack_max: 20,
     });
     return true;
   }

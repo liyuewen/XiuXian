@@ -23,12 +23,6 @@ export default class CharacterEntity extends BasicAttrEntity {
   name: string;
 
   /**
-   * 装备id
-   */
-  @Column()
-  equipment_id: string;
-
-  /**
    * 修为等级
    */
   @Column()
@@ -75,4 +69,11 @@ export default class CharacterEntity extends BasicAttrEntity {
     message: '性别只能是1:男 2:女',
   })
   sex: number;
+
+  /**
+   * 背包最大容量
+   */
+  @Column()
+  knapsack_max: number;
+
 }
