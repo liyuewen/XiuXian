@@ -17,7 +17,7 @@ export default class MonsterEntity extends BasicAttrEntity {
    * 一般不展示
    */
   @Column()
-  description: string;
+  desc: string;
 
   /**
    * 修为等级

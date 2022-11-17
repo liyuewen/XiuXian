@@ -18,7 +18,7 @@ export default class GameMapEntity {
    */
   @Column()
   @IsEmpty()
-  description: string;
+  desc: string;
 
   /**
    * 当前地图限制修为等级

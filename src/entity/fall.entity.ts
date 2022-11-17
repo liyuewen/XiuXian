@@ -1,3 +1,5 @@
+import { FallRelationTypeEnum } from 'src/enum/fall.enum';
+import { GoodsTypeEnum } from 'src/enum/goods.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicGoodsEntity } from './base/basic_goods.entity';
 
@@ -11,17 +13,20 @@ export default class FallEntity extends BasicGoodsEntity {
   id: number;
 
   /**
-   * 掉落物品的数量
+   * 一般只有怪物，任务才会掉落东西
+   * 而当前id就是怪物或者任务的id
    */
   @Column()
-  count: string;
+  relation_id: number;
 
   /**
-   * 标明当前物品属于
-   * 宝箱，怪物，活动，副本，任务
+   * 1:怪物 2:任务
    */
-  @Column()
-  correlation_id: number;
+  @Column({
+    type: 'enum',
+    enum: [FallRelationTypeEnum.monster, FallRelationTypeEnum.task],
+  })
+  relation_type: FallRelationTypeEnum;
 
   /**
    * 掉落物品几率

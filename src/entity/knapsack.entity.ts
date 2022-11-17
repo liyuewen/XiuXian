@@ -1,18 +1,18 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { BasicTimeEntity } from "./base/basic_time.entity";
+import { GoodsTypeEnum } from 'src/enum/goods.enum';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BasicGoodsEntity } from './base/basic_goods.entity';
 
 /**
  * 背包表
  */
-@Entity("knapsack")
-export default class KnapsackEntity extends BasicTimeEntity {
+@Entity('knapsack')
+export default class KnapsackEntity extends BasicGoodsEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   /**
-   * 物品id
+   * 用户id
    */
   @Column()
-  goods_id: number;
-
+  user_id: number;
 }

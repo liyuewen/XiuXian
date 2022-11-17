@@ -3,6 +3,7 @@ import { BasicTimeEntity } from "./base/basic_time.entity";
 
 /**
  * 宝箱表
+ * 加一个宝箱列表
  */
 @Entity("treasure_chest")
 export default class TreasureChestEntity extends BasicTimeEntity {
@@ -14,6 +15,6 @@ export default class TreasureChestEntity extends BasicTimeEntity {
   name: string;
 
   @Column()
-  description: string;
+  desc: string;
 
 }

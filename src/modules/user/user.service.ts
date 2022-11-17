@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Request } from 'express';
 import Utils from 'src/utils/utils';
-import ResultFormat from 'src/common/format/result';
 import UserDao from 'src/dao/user.dao';
 import CharacterDao from 'src/dao/character.dao';
 import CharacterEntity from 'src/entity/character.entity';
 import Redis from 'src/common/redis';
 import HttpError from 'src/common/error/http_error';
+import AuthRedis from 'src/common/redis/auth';
 // root uf854adqw666
 @Injectable()
 export class UserService {
@@ -42,19 +42,14 @@ export class UserService {
     const date = new Date();
     const passwordMd5 = this.passwordMd5(password);
     const user = await this.userDao.login(username, passwordMd5);
+    const token = Utils.token(user.id);
     if (user) {
       await this.userDao.updateUser(user.id, {
         last_login_ip: ip,
         last_login_time: date,
       });
-      const userRedis = await Redis.get(user.id);
-      if (Utils.isExists(userRedis)) {
-        await Redis.del(userRedis.token);
-        await Redis.del(user.id);
-      }
-      const token = Utils.token(user.id);
-      await Redis.set(token, user.id, 60 * 60 * 24 * 7);
-      await Redis.set(user.id, { ...user, token: token }, 60 * 60 * 24 * 7);
+      await AuthRedis.delToken(user.id);
+      await AuthRedis.setToken(token, user);
       return {
         token: token,
       };

@@ -1,9 +1,8 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import AuthError from 'src/common/error/auth_error';
-import Redis from 'src/common/redis';
+import AuthRedis from 'src/common/redis/auth';
 import UserEntity from 'src/entity/user.entity';
-import Utils from 'src/utils/utils';
 
 /**
  * 用于判断用户是否有权限创建物品
@@ -27,13 +26,9 @@ export class RoleCreate implements CanActivate {
   }
 
   async isAuth(token: string) {
-    if (!Utils.isExists(token)) return true;
-    const userId = await Redis.get(token);
-    if (Utils.isExists(userId)) {
-      const user: UserEntity = await Redis.get(userId);
-      if (user.create_goods === '1') {
-        return false;
-      }
+    const user: UserEntity = await AuthRedis.getToken(token);
+    if (user.create_goods === '1') {
+      return false;
     }
     return true;
   }

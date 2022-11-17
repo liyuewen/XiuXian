@@ -4,37 +4,49 @@ export abstract class BasicAttrEntity {
   /**
    * 攻击力
    */
-  @Column()
+  @Column({
+    default: 0,
+  })
   attack: number;
 
   /**
    * 防御力
    */
-  @Column()
+  @Column({
+    default: 0,
+  })
   defense: number;
 
   /**
    * 生命值
    */
-  @Column()
+  @Column({
+    default: 0,
+  })
   hp: number;
 
   /**
    * 精神
    */
-  @Column()
+  @Column({
+    default: 0,
+  })
   spirit: number;
 
   /**
    * 体力
    */
-  @Column()
+  @Column({
+    default: 0,
+  })
   physical_strength: number;
 
   /**
    * 灵巧
    */
-  @Column()
+  @Column({
+    default: 0,
+  })
   dexterous: number;
 
   /**

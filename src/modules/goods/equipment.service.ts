@@ -9,8 +9,8 @@ export class EquipmentService {
 
   async createEquipment(options: Omit<EquipmentEntity, 'id'>) {
     await Utils.validateError(options, EquipmentEntity);
-    const result = await this.equipmentDao.createEquipment(options);
-    console.log(result);
+    const equipment = await this.equipmentDao.createEquipment(options);
+    console.log(equipment, 'equipment');
     return true;
   }
 }

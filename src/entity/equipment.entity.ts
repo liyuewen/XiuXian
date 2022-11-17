@@ -22,9 +22,21 @@ export default class EquipmentEntity extends BasicAttrEntity {
    * 8:腰带
    * 9:护符
    */
-  @Column()
+  @Column({
+    type: 'enum',
+    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  })
   @IsNotEmpty()
-  position: string;
+  position: number;
+
+  /**
+   * 装备描述
+   */
+  @Column({
+    length: '50',
+    default: '',
+  })
+  desc: string;
 
   /**
    * 装备名称
@@ -37,21 +49,23 @@ export default class EquipmentEntity extends BasicAttrEntity {
 
   /**
    * 装备类型
-   * 1: 科技武器
-   * 2: 法宝
-   * 3: 灵魂武器
+   * 1: 法宝装备
+   * 2: 科技装备
+   * 3: 灵魂装备
    */
   @Column({
-    length: '3',
+    type: 'enum',
+    enum: [1, 2, 3],
   })
   @IsNotEmpty()
-  type: string;
+  type: number;
 
   /**
    * 装备特效id
    */
   @Column({
     length: '20',
+    default: '',
   })
   attribute_id: string;
 

@@ -8,9 +8,9 @@ import { HttpFormatInterceptor } from './interceptor/http-format/http-format.int
 async function bootstrap() {
   try {
     const app = await NestFactory.create(AppModule);
+    await Redis.createClient();
     app.useGlobalInterceptors(new HttpFormatInterceptor())
     app.useLogger(new NestLoggerService());
-    Redis.createClient()
     await app.listen(3000, () => {
       LoggerCommon.info('Server is running on port http://127.0.0.1:3000');
     });
