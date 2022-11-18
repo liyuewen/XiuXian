@@ -1,4 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
+import { EquipmentPositionEnum, EquipmentTypeEnum } from 'src/enum/goods.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicAttrEntity } from './base/basic_attr.entity';
 
@@ -10,24 +11,13 @@ export default class EquipmentEntity extends BasicAttrEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  /**
-   * 装备部位
-   * 1:武器
-   * 2:头盔
-   * 3:衣服
-   * 4:鞋子
-   * 5:项链
-   * 6:戒指
-   * 7:护腕
-   * 8:腰带
-   * 9:护符
-   */
+
   @Column({
     type: 'enum',
-    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    enum: EquipmentPositionEnum,
   })
   @IsNotEmpty()
-  position: number;
+  position: EquipmentPositionEnum;
 
   /**
    * 装备描述
@@ -48,17 +38,14 @@ export default class EquipmentEntity extends BasicAttrEntity {
   name: string;
 
   /**
-   * 装备类型
-   * 1: 法宝装备
-   * 2: 科技装备
-   * 3: 灵魂装备
+   * 法宝类型
    */
   @Column({
     type: 'enum',
-    enum: [1, 2, 3],
+    enum: EquipmentTypeEnum,
   })
   @IsNotEmpty()
-  type: number;
+  type: EquipmentTypeEnum;
 
   /**
    * 装备特效id

@@ -13,4 +13,10 @@ export class EquipmentService {
     console.log(equipment, 'equipment');
     return true;
   }
+
+  async getEquipmentList() {
+    const equipmentList = await this.equipmentDao.getEquipmentList();
+    console.log(equipmentList, 'equipmentList');
+    return equipmentList;
+  }
 }

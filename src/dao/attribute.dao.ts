@@ -1,21 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import GoodsEntity from 'src/entity/goods.entity';
+import EquipmentEntity from 'src/entity/equipment.entity';
 import { DataSource } from 'typeorm';
 
 @Injectable()
-export default class GoodsDao {
+export default class AttributeDao {
   constructor(private dataSource: DataSource) {}
 
-  async createGoods(values: Omit<GoodsEntity, 'id'>) {
+  async createAttribute(values: Omit<EquipmentEntity, 'id'>) {
     const dataSource = this.dataSource;
     try {
-      const goods = await dataSource
+      const equipment = await dataSource
         .createQueryBuilder()
         .insert()
-        .into(GoodsEntity)
+        .into(EquipmentEntity)
         .values(values)
         .execute();
-      return goods;
+      return equipment;
     } catch (error) {
       throw error;
     }

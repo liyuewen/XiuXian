@@ -1,3 +1,9 @@
+import { IsNotEmpty } from 'class-validator';
+import {
+  DamageTypeEnum,
+  EquipmentPositionEnum,
+  EquipmentTypeEnum,
+} from 'src/enum/goods.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
@@ -13,6 +19,7 @@ export default class AttributeEntity {
    * 有些特效只有装备到达一定等级出现
    */
   @Column()
+  @IsNotEmpty()
   level: number;
 
   /**
@@ -21,6 +28,7 @@ export default class AttributeEntity {
   @Column({
     length: '15',
   })
+  @IsNotEmpty()
   name: string;
 
   /**
@@ -29,25 +37,38 @@ export default class AttributeEntity {
   @Column({
     length: '50',
   })
+  @IsNotEmpty()
   desc: string;
 
   /**
-   * 装备特效类型
-   * 1攻击类，2防御类，3辅助类, 4控制类
+   * 特效属于那种法宝类型
    */
   @Column({
-    default: '0',
-    length: '2',
+    type: 'enum',
+    enum: EquipmentTypeEnum,
   })
-  type: string;
+  @IsNotEmpty()
+  type: EquipmentTypeEnum;
+
+  /**
+   * 特效属于那种法宝位置
+   */
+  @Column({
+    type: 'enum',
+    enum: EquipmentPositionEnum,
+  })
+  @IsNotEmpty()
+  position: EquipmentPositionEnum;
 
   /**
    * 触发概率
+   * 0-100
    */
   @Column({
     default: 0,
     type: 'tinyint',
   })
+  @IsNotEmpty()
   probability: number;
 
   /**
@@ -57,6 +78,7 @@ export default class AttributeEntity {
     default: 0,
     type: 'tinyint',
   })
+  @IsNotEmpty()
   proportion: number;
 
   /**
@@ -66,6 +88,7 @@ export default class AttributeEntity {
     default: 0,
     type: 'tinyint',
   })
+  @IsNotEmpty()
   continuous: number;
 
   /**
@@ -75,5 +98,15 @@ export default class AttributeEntity {
     default: 0,
     type: 'tinyint',
   })
+  @IsNotEmpty()
   cooling_time: number;
+
+  /**
+   * 特效的伤害数据来源
+   */
+  @Column({
+    type: 'enum',
+    enum: DamageTypeEnum,
+  })
+  damage_type: DamageTypeEnum;
 }

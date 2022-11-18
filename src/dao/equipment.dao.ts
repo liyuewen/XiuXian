@@ -20,4 +20,32 @@ export default class EquipmentDao {
       throw error;
     }
   }
+
+  async getEquipmentList() {
+    const dataSource = this.dataSource;
+    try {
+      const equipmentList = await dataSource
+        .getRepository(EquipmentEntity)
+        .createQueryBuilder('user')
+        .getMany();
+      return equipmentList;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getEquipmentById(id: number) {
+    const dataSource = this.dataSource;
+    try {
+      const equipment = await dataSource
+        .createQueryBuilder()
+        .select()
+        .from(EquipmentEntity, 'equipment')
+        .where('equipment.id = :id', { id })
+        .getOne();
+      return equipment;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

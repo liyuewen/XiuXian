@@ -1,4 +1,3 @@
-import { GoodsTypeEnum } from 'src/enum/goods.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicGoodsEntity } from './base/basic_goods.entity';
 

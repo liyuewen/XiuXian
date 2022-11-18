@@ -9,13 +9,13 @@ import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { HttpExceptionFilter } from './filter/http-exception/http-exception.filter';
 import { MapModule } from './modules/map/map.module';
 import { RolesGuard } from './modules/auth/role_guard.service';
-import { GoodsModule } from './modules/goods/goods.module';
+import { EquipmentModule } from './modules/equipment/equipment.module';
 
 @Module({
   imports: [
     UserModule,
     MapModule,
-    GoodsModule,
+    EquipmentModule,
     TypeOrmModule.forRoot(AppConfig.mysql),
   ],
   controllers: [AppController],
