@@ -8,7 +8,8 @@ import {
 } from '@nestjs/common';
 import EquipmentEntity from 'src/entity/equipment.entity';
 import { HttpExceptionFilter } from 'src/filter/http-exception/http-exception.filter';
-import { RoleCreate } from '../auth/role_create.service';
+import { RequestBody } from 'src/types/request';
+import { RoleCreate } from '../../auth/role_create.service';
 import { AttributeService } from './attribute/attribute.service';
 import { EquipmentService } from './equipment.service';
 
@@ -27,7 +28,7 @@ export class EquipmentController {
   }
 
   @Post('create')
-  async createEquipment(@Body() body: Omit<EquipmentEntity, 'id'>) {
+  async createEquipment(@Body() body: RequestBody) {
     return await this.equipmentService.createEquipment(body);
   }
 
@@ -37,7 +38,7 @@ export class EquipmentController {
   }
 
   @Post('createAttribute')
-  async createAttribute(@Body() body: any) {
+  async createAttribute(@Body() body: RequestBody) {
     return await this.attributeService.createAttribute(body);
   }
 }

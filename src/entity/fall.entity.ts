@@ -23,7 +23,7 @@ export default class FallEntity extends BasicGoodsEntity {
    */
   @Column({
     type: 'enum',
-    enum: [FallRelationTypeEnum.monster, FallRelationTypeEnum.task],
+    enum: FallRelationTypeEnum,
   })
   relation_type: FallRelationTypeEnum;
 

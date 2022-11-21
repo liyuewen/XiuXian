@@ -58,3 +58,36 @@ export enum DamageTypeEnum {
   zjxl = 3,
   dfxl = 4,
 }
+
+/**
+ * 流血 bleeding
+ * 眩晕 dizziness
+ * 石化 petrification
+ * 嗜血 bloodthirsty
+ * 凌厉 ruthless
+ * 修养 cultivation
+ * 抵挡 shield
+ * 减伤 reduceDamage
+ * 清晰 mana
+ */
+export enum AttributeTypeEnum {
+  bleeding = 1,
+  dizziness = 2,
+  petrification = 3,
+  bloodthirsty = 4,
+  ruthless = 5,
+  cultivation = 6,
+  shield = 7,
+  reduceDamage = 8,
+  mana = 9,
+}
+
+export enum MaterialRarityEnum {
+  white = 1,
+  green = 2,
+  blue = 3,
+  purple = 4,
+  orange = 5,
+  golden = 6,
+  red = 7,
+}

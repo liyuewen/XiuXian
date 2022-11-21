@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { EquipmentPositionEnum, EquipmentTypeEnum } from 'src/enum/goods.enum';
+import { EquipmentPositionEnum, EquipmentTypeEnum, MaterialRarityEnum } from 'src/enum/goods.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicAttrEntity } from './base/basic_attr.entity';
 
@@ -10,7 +10,6 @@ import { BasicAttrEntity } from './base/basic_attr.entity';
 export default class EquipmentEntity extends BasicAttrEntity {
   @PrimaryGeneratedColumn()
   id: number;
-
 
   @Column({
     type: 'enum',
@@ -76,4 +75,14 @@ export default class EquipmentEntity extends BasicAttrEntity {
   @Column()
   @IsNotEmpty()
   limit_kj_level: number;
+
+  /**
+   * 稀有度
+   * 暂时影响的是出特效是特效的上限
+   */
+  @Column({
+    type: 'enum',
+    enum: MaterialRarityEnum,
+  })
+  rarity: MaterialRarityEnum;
 }

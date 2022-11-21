@@ -1,5 +1,6 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, Max, Min } from 'class-validator';
 import {
+  AttributeTypeEnum,
   DamageTypeEnum,
   EquipmentPositionEnum,
   EquipmentTypeEnum,
@@ -48,7 +49,7 @@ export default class AttributeEntity {
     enum: EquipmentTypeEnum,
   })
   @IsNotEmpty()
-  type: EquipmentTypeEnum;
+  equipment_type: EquipmentTypeEnum;
 
   /**
    * 特效属于那种法宝位置
@@ -59,6 +60,16 @@ export default class AttributeEntity {
   })
   @IsNotEmpty()
   position: EquipmentPositionEnum;
+
+  /**
+   * 特效类型如流血，眩晕等
+   */
+  @Column({
+    type: 'enum',
+    enum: AttributeTypeEnum,
+  })
+  @IsNotEmpty()
+  attribute_type: AttributeTypeEnum;
 
   /**
    * 触发概率
@@ -72,11 +83,17 @@ export default class AttributeEntity {
   probability: number;
 
   /**
-   * 加成比例
+   * 加成比例 0-100
    */
   @Column({
     default: 0,
     type: 'tinyint',
+  })
+  @Min(0, {
+    message: '加成比例不能小于0',
+  })
+  @Max(100, {
+    message: '加成比例不能大于100',
   })
   @IsNotEmpty()
   proportion: number;

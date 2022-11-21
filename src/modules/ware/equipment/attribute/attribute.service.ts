@@ -7,9 +7,10 @@ import Utils from 'src/utils/utils';
 export class AttributeService {
   constructor(private readonly attributeDao: AttributeDao) {}
 
-  async createAttribute(options: Omit<AttributeDao, 'id'>) {
+  async createAttribute(options: Omit<AttributeEntity, 'id'>) {
     await Utils.validateError(options, AttributeEntity);
-    console.log(options);
-    return 1;
+    const result = await this.attributeDao.createAttribute(options);
+    console.log(result);
+    return true;
   }
 }

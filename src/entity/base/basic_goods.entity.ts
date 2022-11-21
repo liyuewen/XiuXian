@@ -20,7 +20,7 @@ export abstract class BasicGoodsEntity extends BasicTimeEntity {
 
   @Column({
     type: 'enum',
-    enum: [GoodsTypeEnum.equipment, GoodsTypeEnum.treasureChest],
+    enum: GoodsTypeEnum,
   })
   goods_type: GoodsTypeEnum;
 

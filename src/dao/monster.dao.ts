@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import AttributeEntity from 'src/entity/attribute.entity';
+import MonsterEntity from 'src/entity/monster.entity';
 import { DataSource } from 'typeorm';
 
 @Injectable()
-export default class AttributeDao {
+export default class MonsterDao {
   constructor(private dataSource: DataSource) {}
 
-  async createAttribute(values: Omit<AttributeEntity, 'id'>) {
+  async createMonster(values: Omit<MonsterEntity, 'id'>) {
     const dataSource = this.dataSource;
     try {
       const equipment = await dataSource
         .createQueryBuilder()
         .insert()
-        .into(AttributeEntity)
+        .into(MonsterEntity)
         .values(values)
         .execute();
       return equipment;

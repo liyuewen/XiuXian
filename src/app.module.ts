@@ -9,13 +9,17 @@ import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { HttpExceptionFilter } from './filter/http-exception/http-exception.filter';
 import { MapModule } from './modules/map/map.module';
 import { RolesGuard } from './modules/auth/role_guard.service';
-import { EquipmentModule } from './modules/equipment/equipment.module';
+import { MonsterModule } from './modules/monster/monster.module';
+import { FallModule } from './modules/fall/fall.module';
+import { WareModule } from './modules/ware/ware.module';
 
 @Module({
   imports: [
     UserModule,
     MapModule,
-    EquipmentModule,
+    WareModule,
+    MonsterModule,
+    FallModule,
     TypeOrmModule.forRoot(AppConfig.mysql),
   ],
   controllers: [AppController],
