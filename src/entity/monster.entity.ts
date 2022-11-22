@@ -4,6 +4,7 @@ import { BasicAttrEntity } from './base/basic_attr.entity';
 
 /**
  * 怪物
+ * TODO: 怪物的技能
  */
 @Entity('monster')
 export default class MonsterEntity extends BasicAttrEntity {

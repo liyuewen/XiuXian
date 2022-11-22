@@ -13,7 +13,7 @@ export class RoleCreate implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest() as Request;
-    const noAuth = this.reflector.get<boolean>('no-auth', context.getHandler());
+    const noAuth = this.reflector.get<boolean>('no-root-auth', context.getHandler());
     if (noAuth) {
       return true;
     }

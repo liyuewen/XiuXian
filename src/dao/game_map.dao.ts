@@ -72,4 +72,79 @@ export default class GameMapDao {
       throw error;
     }
   }
+
+  async isMap(id: number) {
+    const dataSource = this.dataSource;
+    try {
+      const map = await dataSource
+        .createQueryBuilder(GameMapEntity, 'game_map')
+        .where('game_map.id=:id', { id })
+        .getCount();
+      return map;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async createMap(values: Omit<GameMapEntity, 'id'>) {
+    const dataSource = this.dataSource;
+    values.created_time = new Date();
+    values.updated_time = new Date();
+    try {
+      const map = await dataSource
+        .createQueryBuilder()
+        .insert()
+        .into(GameMapEntity)
+        .values(values)
+        .execute();
+      return map;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getRoomList(game_map_id: number) {
+    const dataSource = this.dataSource;
+    try {
+      const room = await dataSource
+        .createQueryBuilder(RoomEntity, 'room')
+        .where('room.game_map_id=:game_map_id', { game_map_id })
+        .orderBy('room.sort', 'ASC')
+        .getMany();
+      return room;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async createRoom(values: Omit<RoomEntity, 'id'>) {
+    const dataSource = this.dataSource;
+
+    try {
+      const room = await dataSource
+        .createQueryBuilder()
+        .insert()
+        .into(RoomEntity)
+        .values(values)
+        .execute();
+      return room;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateRoom(values: RoomEntity) {
+    const dataSource = this.dataSource;
+    try {
+      const room = await dataSource
+        .createQueryBuilder()
+        .update(RoomEntity)
+        .set(values)
+        .where('id=:id', { id: values.id })
+        .execute();
+      return room;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

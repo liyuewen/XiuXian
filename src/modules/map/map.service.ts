@@ -1,21 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import ResultFormat from 'src/common/format/result';
 import GameMapDao from 'src/dao/game_map.dao';
 import GameMapEntity from 'src/entity/game_map.entity';
-import { Repository } from 'typeorm';
+import Utils from 'src/utils/utils';
 
 @Injectable()
 export class MapService {
   constructor(private gameMapDao: GameMapDao) {}
 
-  async test() {
+  async getMapList() {
     const map = await this.gameMapDao.getMap(2);
-    return ResultFormat.success({ data: map });
+    return true;
   }
 
   async getMapDetails(id: number) {
     const map = await this.gameMapDao.getMapDetails(id);
-    return ResultFormat.success({ data: map });
+    return true;
+  }
+
+  async createMap(map: Omit<GameMapEntity, 'id'>) {
+    await Utils.validateError(map, GameMapEntity);
+    const result = await this.gameMapDao.createMap(map);
+    return true;
   }
 }

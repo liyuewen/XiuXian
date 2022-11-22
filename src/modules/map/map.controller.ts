@@ -2,36 +2,61 @@ import {
   Body,
   Controller,
   Get,
-  HttpStatus,
   Post,
   Query,
-  Req,
   UseFilters,
+  UseGuards,
 } from '@nestjs/common';
 import HttpError from 'src/common/error/http_error';
+import { NoRootAuth } from 'src/decorator/auth';
 import { HttpExceptionFilter } from 'src/filter/http-exception/http-exception.filter';
+import { RequestBody } from 'src/types/request';
+import { RoleCreate } from '../auth/role_create.service';
 import { MapService } from './map.service';
+import { RoomService } from './room.service';
 
+@UseGuards(RoleCreate)
 @Controller('map')
 @UseFilters(HttpExceptionFilter)
 export class MapController {
-  constructor(private mapService: MapService) {}
+  constructor(
+    private mapService: MapService,
+    private roomService: RoomService,
+  ) {}
 
-  @Get('/test')
-  async test(@Query() query: any) {
+  @NoRootAuth()
+  @Get('/getList')
+  async getMapList(@Query() query: any) {
     try {
-      return await this.mapService.test();
+      return await this.mapService.getMapList();
     } catch (error) {
       throw new HttpError(error, 10000);
     }
   }
 
+  @NoRootAuth()
   @Get('/details')
-  async getMapDetails(@Query() query: any) {
+  async getMapDetails(@Query() query: { id: number }) {
     try {
       return await this.mapService.getMapDetails(query.id);
     } catch (error) {
       throw new HttpError(error, 10000);
     }
+  }
+
+  @NoRootAuth()
+  @Get('/roomList')
+  async getRoomList(@Query() query: { game_map_id: number }) {
+    return await this.roomService.getList(query.game_map_id);
+  }
+
+  @Post('/createMap')
+  async createMap(@Body() body: RequestBody) {
+    return await this.mapService.createMap(body);
+  }
+
+  @Post('/createRoom')
+  async createRoom(@Body() body: RequestBody) {
+    return await this.roomService.createRoom(body);
   }
 }

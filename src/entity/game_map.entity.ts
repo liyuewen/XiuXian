@@ -1,50 +1,44 @@
-import { IsEmpty } from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BasicTimeEntity } from './base/basic_time.entity';
 
 /**
  * 地图
  */
 @Entity('game_map')
-export default class GameMapEntity {
+export default class GameMapEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  @IsEmpty()
+  @IsNotEmpty()
   name: string;
 
   /**
    * 地图描述
    */
   @Column()
-  @IsEmpty()
+  @IsNotEmpty()
   desc: string;
 
   /**
    * 当前地图限制修为等级
    */
   @Column()
-  @IsEmpty()
+  @IsNotEmpty()
   limit_xw_level: number;
 
   /**
    * 当前地图限制科技等级
    */
   @Column()
-  @IsEmpty()
+  @IsNotEmpty()
   limit_kj_level: number;
 
-  /**
-   * 地图类型
-   */
-  @Column()
-  @IsEmpty()
-  type: string;
-
-  @Column()
-  @IsEmpty()
-  created_time: Date;
-
-  @Column()
-  updated_time: Date;
+  // /**
+  //  * 地图类型
+  //  */
+  // @Column()
+  // @IsEmpty()
+  // type: string;
 }

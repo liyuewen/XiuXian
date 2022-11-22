@@ -91,3 +91,11 @@ export enum MaterialRarityEnum {
   golden = 6,
   red = 7,
 }
+
+/**
+ * 当前东西是什么掉落的
+ */
+export enum FallRelationTypeEnum {
+  monster = 1,
+  task = 2,
+}

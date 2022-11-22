@@ -3,19 +3,19 @@
 这是一个修仙游戏的后端，当然还在完善中
 需要mysql和redis,配置请到src/config/app.config.ts中修改
 
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
+### 未完成接口
+#### http相关
+    1. 创建怪物 完成
+    2. 创建房间
+    3. 创建地图
+    4. 合成武器
+    5. 合成材料
+    6. 角色面板
+#### socket
+    1. socket心跳
+    2. 修为计算包含在线时和离线时，通过保存断开时间来处理离线时的
+    3. 接收到对战指令处理对战
+#### service
+    1. 生成对战时的属性面板(不可见)
+    2. 对战逻辑
+    3. 打怪掉落的修为值和奖励

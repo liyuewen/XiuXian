@@ -1,3 +1,4 @@
+import { RoomTypeEnum } from 'src/enum/map.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicTimeEntity } from './base/basic_time.entity';
 
@@ -5,19 +6,18 @@ import { BasicTimeEntity } from './base/basic_time.entity';
  * 房间表
  */
 @Entity('room')
-export default class RoomEntity extends BasicTimeEntity {
+export default class RoomEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   /**
    * 房间类型
-   * 1. 普通房间
-   * 2. 精英房间
-   * 3. BOSS房间
-   * 4. 宝箱房间
    */
-  @Column()
-  type: number;
+  @Column({
+    type: 'enum',
+    enum: RoomTypeEnum,
+  })
+  type: RoomTypeEnum;
 
   /**
    * 关联id
