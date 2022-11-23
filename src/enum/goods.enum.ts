@@ -1,12 +1,13 @@
+/**
+ * 系统全部物品的类型
+ * 装备 equipment
+ * 宝箱 treasureChest
+ * 材料 material
+ */
 export enum GoodsTypeEnum {
-  /**
-   * 装备
-   */
   equipment = 1,
-  /**
-   * 宝箱
-   */
   treasureChest = 2,
+  material = 3,
 }
 
 /**
@@ -82,6 +83,9 @@ export enum AttributeTypeEnum {
   mana = 9,
 }
 
+/**
+ * 物品稀有度
+ */
 export enum MaterialRarityEnum {
   white = 1,
   green = 2,
@@ -94,8 +98,36 @@ export enum MaterialRarityEnum {
 
 /**
  * 当前东西是什么掉落的
+ * monster 怪物
+ * task 任务
  */
 export enum FallRelationTypeEnum {
   monster = 1,
   task = 2,
+}
+
+/**
+ * 设计图类型
+ * 1 材料
+ * 2 高级装备
+ * 3 装备特效打造
+ */
+export enum DesignDrawingTypeEnum {
+  material = 1,
+  highEquipment = 2,
+  equipmentEffect = 3,
+}
+
+/**
+ * 物品来源
+ * 怪物掉落 monster
+ * 任务掉落 task
+ * 商店购买 shop
+ * 管理员赠送 admin
+ */
+export enum GoodsSourceEnum {
+  monster = 1,
+  task = 2,
+  shop = 3,
+  admin = 4,
 }

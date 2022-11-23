@@ -1,11 +1,13 @@
+import { IsNotEmpty } from 'class-validator';
+import { GoodsSourceEnum } from 'src/enum/goods.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicGoodsEntity } from './base/basic_goods.entity';
+import { BasicQuoteGoodsEntity } from './base/basic_quote_goods.entity';
 
 /**
  * 背包表
  */
 @Entity('knapsack')
-export default class KnapsackEntity extends BasicGoodsEntity {
+export default class KnapsackEntity extends BasicQuoteGoodsEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -13,5 +15,16 @@ export default class KnapsackEntity extends BasicGoodsEntity {
    * 用户id
    */
   @Column()
-  user_id: number;
+  @IsNotEmpty()
+  character_id: number;
+
+  /**
+   * 物品来源
+   */
+  @Column({
+    type: 'enum',
+    enum: GoodsSourceEnum,
+  })
+  @IsNotEmpty()
+  source: GoodsSourceEnum
 }

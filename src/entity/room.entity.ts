@@ -1,6 +1,5 @@
 import { RoomTypeEnum } from 'src/enum/map.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './base/basic_time.entity';
 
 /**
  * 房间表

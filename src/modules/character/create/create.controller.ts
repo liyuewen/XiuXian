@@ -2,16 +2,16 @@ import { Body, Controller, Post, UseFilters, UseGuards } from '@nestjs/common';
 import { HttpExceptionFilter } from 'src/filter/http-exception/http-exception.filter';
 import { RoleCreate } from 'src/modules/auth/role_create.service';
 import { RequestBody } from 'src/types/request';
-import { MaterialService } from './material.service';
+import { CreateService } from './create.service';
 
 @UseGuards(RoleCreate)
-@Controller('/ware/material')
+@Controller('character/create')
 @UseFilters(HttpExceptionFilter)
-export class MaterialController {
-  constructor(private readonly materialService: MaterialService) {}
+export class CreateController {
+  constructor(private createService: CreateService) {}
 
-  @Post('create')
-  async create(@Body() body: RequestBody) {
-    return await this.materialService.createMaterial(body);
+  @Post('knapsack')
+  async createKnapsack(@Body() body: RequestBody) {
+    return await this.createService.createKnapsack(body);
   }
 }

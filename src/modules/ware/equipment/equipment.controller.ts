@@ -7,7 +7,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { NoRootAuth } from 'src/decorator/auth';
-import EquipmentEntity from 'src/entity/equipment.entity';
 import { HttpExceptionFilter } from 'src/filter/http-exception/http-exception.filter';
 import { RequestBody } from 'src/types/request';
 import { RoleCreate } from '../../auth/role_create.service';
@@ -15,7 +14,7 @@ import { AttributeService } from './attribute.service';
 import { EquipmentService } from './equipment.service';
 
 @UseGuards(RoleCreate)
-@Controller('equipment')
+@Controller('/ware/equipment')
 @UseFilters(HttpExceptionFilter)
 export class EquipmentController {
   constructor(

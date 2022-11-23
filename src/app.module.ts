@@ -12,6 +12,7 @@ import { RolesGuard } from './modules/auth/role_guard.service';
 import { MonsterModule } from './modules/monster/monster.module';
 import { FallModule } from './modules/fall/fall.module';
 import { WareModule } from './modules/ware/ware.module';
+import { CharacterModule } from './modules/character/character.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { WareModule } from './modules/ware/ware.module';
     WareModule,
     MonsterModule,
     FallModule,
+    CharacterModule,
     TypeOrmModule.forRoot(AppConfig.mysql),
   ],
   controllers: [AppController],

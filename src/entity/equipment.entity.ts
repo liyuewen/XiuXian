@@ -1,13 +1,13 @@
 import { IsNotEmpty } from 'class-validator';
 import { EquipmentPositionEnum, EquipmentTypeEnum, MaterialRarityEnum } from 'src/enum/goods.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicAttrEntity } from './base/basic_attr.entity';
+import { BasicEquipment } from './base/basic_equipment.entity';
 
 /**
  * 装备
  */
 @Entity('equipment')
-export default class EquipmentEntity extends BasicAttrEntity {
+export default class EquipmentEntity extends BasicEquipment {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -26,15 +26,6 @@ export default class EquipmentEntity extends BasicAttrEntity {
     default: '',
   })
   desc: string;
-
-  /**
-   * 装备名称
-   */
-  @Column({
-    length: '15',
-  })
-  @IsNotEmpty()
-  name: string;
 
   /**
    * 法宝类型

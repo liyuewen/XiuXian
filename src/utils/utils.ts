@@ -122,4 +122,13 @@ export default class Utils {
     const md5 = this.cryptoJS.MD5(time + num + id).toString();
     return md5 + num;
   }
+
+  /**
+   * 是否是对象
+   * @param value
+   * @returns
+   */
+  static isObject(value: any): value is Object {
+    return Object.prototype.toString.call(value) == '[object Object]';
+  }
 }
