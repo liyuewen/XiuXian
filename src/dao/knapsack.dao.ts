@@ -9,8 +9,8 @@ export default class KnapsackDao {
   async createKnapsack(values: Omit<KnapsackEntity, 'id'>) {
     const dataSource = this.dataSource;
     const date = new Date();
-    values.created_time = date;
-    values.updated_time = date;
+    values.created_at = date;
+    values.updated_at = date;
     try {
       const knapsack = await dataSource
         .createQueryBuilder()
@@ -24,16 +24,12 @@ export default class KnapsackDao {
     }
   }
 
-  async getKnapsackList(values: Partial<KnapsackEntity>) {
+  async getKnapsackList(character_id: number) {
     const dataSource = this.dataSource;
     try {
       const knapsack = await dataSource
-        .createQueryBuilder()
-        .select()
-        .from(KnapsackEntity, 'knapsack')
-        .where('knapsack.character_id = :character_id', {
-          character_id: values.character_id,
-        })
+        .createQueryBuilder(KnapsackEntity, 'knapsack')
+        .where('knapsack.character_id = :character_id', { character_id })
         .getMany();
       return knapsack;
     } catch (error) {
@@ -41,19 +37,14 @@ export default class KnapsackDao {
     }
   }
 
-  async getKnapsack(values: Partial<KnapsackEntity>) {
+  async getKnapsack(character_id: number, commodity_id: number) {
     const dataSource = this.dataSource;
     try {
       const knapsack = await dataSource
-        .createQueryBuilder()
-        .select()
-        .from(KnapsackEntity, 'knapsack')
-        .where('knapsack.character_id = :character_id', {
-          character_id: values.character_id,
-        })
-        .andWhere('knapsack.commodity_id = :commodity_id', {
-          commodity_id: values.commodity_id,
-        })
+        .createQueryBuilder(KnapsackEntity, 'knapsack')
+        .where('knapsack.character_id = :character_id', { character_id })
+        .andWhere('knapsack.commodity_id = :commodity_id', { commodity_id })
+        .orderBy('knapsack.quantity', 'ASC')
         .getOne();
       return knapsack;
     } catch (error) {
@@ -63,7 +54,7 @@ export default class KnapsackDao {
 
   async updateKnapsack(values: Partial<KnapsackEntity>) {
     const dataSource = this.dataSource;
-    values.updated_time = new Date();
+    values.updated_at = new Date();
     try {
       const knapsack = await dataSource
         .createQueryBuilder()
@@ -78,5 +69,4 @@ export default class KnapsackDao {
       throw error;
     }
   }
-
 }

@@ -88,8 +88,8 @@ export default class GameMapDao {
 
   async createMap(values: Omit<GameMapEntity, 'id'>) {
     const dataSource = this.dataSource;
-    values.created_time = new Date();
-    values.updated_time = new Date();
+    values.created_at = new Date();
+    values.updated_at = new Date();
     try {
       const map = await dataSource
         .createQueryBuilder()

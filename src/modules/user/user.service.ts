@@ -23,8 +23,8 @@ export class UserService {
     const saveUser = await this.userDao.createUser({
       username: username,
       password: passwordMd5,
-      created_time: date,
-      updated_time: date,
+      created_at: date,
+      updated_at: date,
       register_ip: ip,
       common_ip: ip,
       character_id: 0,

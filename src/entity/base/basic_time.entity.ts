@@ -2,8 +2,11 @@ import { Column } from "typeorm";
 
 export abstract class BasicTimeEntity {
   @Column()
-  created_time: Date;
+  created_at: Date;
 
   @Column()
-  updated_time: Date;
+  updated_at: Date;
+
+  @Column()
+  delete_at: Date;
 }

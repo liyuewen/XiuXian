@@ -38,9 +38,7 @@ export default class EquipmentDao {
     const dataSource = this.dataSource;
     try {
       const equipment = await dataSource
-        .createQueryBuilder()
-        .select()
-        .from(EquipmentEntity, 'equipment')
+        .createQueryBuilder(EquipmentEntity, 'equipment')
         .where('equipment.id = :id', { id })
         .getOne();
       return equipment;

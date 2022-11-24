@@ -19,11 +19,11 @@ export default class UserEntity {
 
   @Column()
   @IsEmpty()
-  created_time: Date;
+  created_at: Date;
 
   @Column()
   @IsEmpty()
-  updated_time: Date;
+  updated_at: Date;
 
   @Column()
   @IsEmpty()

@@ -24,7 +24,10 @@ export abstract class BasicQuoteCommodityEntity extends BasicTimeEntity {
   /**
    * 物品数量
    */
-  @Column()
+  @Column({
+    type: "mediumint",
+    default: 0,
+  })
   @IsNotEmpty()
   quantity: number;
 }

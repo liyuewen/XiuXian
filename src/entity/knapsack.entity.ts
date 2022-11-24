@@ -26,5 +26,33 @@ export default class KnapsackEntity extends BasicQuoteCommodityEntity {
     enum: CommoditySourceEnum,
   })
   @IsNotEmpty()
-  source: CommoditySourceEnum
+  source: CommoditySourceEnum;
+
+  @Column({
+    default: 0,
+    type: 'smallint',
+  })
+  sort: number;
+
+  @Column()
+  @IsNotEmpty()
+  created_at: Date;
+
+  @Column()
+  @IsNotEmpty()
+  updated_at: Date;
+
+  @Column()
+  delete_at: Date;
+
+  @Column()
+  @IsNotEmpty()
+  created_by: number;
+
+  @Column()
+  @IsNotEmpty()
+  updated_by: number;
+
+  @Column()
+  delete_by: number;
 }

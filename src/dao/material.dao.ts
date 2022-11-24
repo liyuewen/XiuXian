@@ -26,9 +26,7 @@ export default class MaterialDao {
     const dataSource = this.dataSource;
     try {
       const equipment = await dataSource
-        .createQueryBuilder()
-        .select()
-        .from(MaterialEntity, 'material')
+        .createQueryBuilder(MaterialEntity, 'material')
         .where('material.id = :id', {
           id,
         })
