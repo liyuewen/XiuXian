@@ -1,18 +1,11 @@
-import { MiddlewareConsumer, Module } from '@nestjs/common';
-import EquipmentDao from 'src/dao/equipment.dao';
+import { Module } from '@nestjs/common';
 import { EquipmentService } from './equipment.service';
 import { EquipmentController } from './equipment.controller';
 import { AttributeService } from './attribute.service';
-import AttributeDao from 'src/dao/attribute.dao';
 
 @Module({
   imports: [],
   controllers: [EquipmentController],
-  providers: [
-    EquipmentService,
-    AttributeService,
-    EquipmentDao,
-    AttributeDao,
-  ],
+  providers: [EquipmentService, AttributeService],
 })
 export class EquipmentModule {}

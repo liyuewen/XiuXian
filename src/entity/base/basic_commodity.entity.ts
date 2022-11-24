@@ -1,11 +1,11 @@
 import { IsNotEmpty } from 'class-validator';
-import { MaterialRarityEnum } from 'src/enum/goods.enum';
+import { MaterialRarityEnum } from 'src/enum/commodity.enum';
 import { Column } from 'typeorm';
 
 /**
  * 物品基础实体
  */
-export abstract class BasicGoodsEntity {
+export abstract class BasicCommodityEntity {
   /**
    * 物品名称
    */
@@ -31,7 +31,7 @@ export abstract class BasicGoodsEntity {
     default: 999,
   })
   @IsNotEmpty()
-  stacking_limit: number;
+  max_quantity: number;
 
   /**
    * 稀有度

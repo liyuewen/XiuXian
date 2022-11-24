@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { DesignDrawingTypeEnum } from 'src/enum/goods.enum';
+import { DesignDrawingTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export interface DesignDrawingFormula {

@@ -1,11 +1,11 @@
 import { Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicGoodsEntity } from './base/basic_goods.entity';
+import { BasicCommodityEntity } from './base/basic_commodity.entity';
 
 /**
  * 材料
  */
 @Entity('material')
-export default class MaterialEntity extends BasicGoodsEntity {
+export default class MaterialEntity extends BasicCommodityEntity {
   @PrimaryGeneratedColumn()
   id: number;
 }

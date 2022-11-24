@@ -29,7 +29,7 @@ export class UserService {
       common_ip: ip,
       character_id: 0,
       last_login_time: date,
-      create_goods: '0',
+      create_commodity: '0',
     });
     if (saveUser) {
       return true;

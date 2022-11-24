@@ -4,7 +4,7 @@
  * 宝箱 treasureChest
  * 材料 material
  */
-export enum GoodsTypeEnum {
+export enum CommodityTypeEnum {
   equipment = 1,
   treasureChest = 2,
   material = 3,
@@ -125,7 +125,7 @@ export enum DesignDrawingTypeEnum {
  * 商店购买 shop
  * 管理员赠送 admin
  */
-export enum GoodsSourceEnum {
+export enum CommoditySourceEnum {
   monster = 1,
   task = 2,
   shop = 3,

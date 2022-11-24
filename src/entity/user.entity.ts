@@ -37,7 +37,7 @@ export default class UserEntity {
     type: 'enum',
     enum: ['0', '1'],
   })
-  create_goods: string;
+  create_commodity: string;
 
   /**
    * 注册地ip

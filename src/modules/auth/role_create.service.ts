@@ -27,7 +27,7 @@ export class RoleCreate implements CanActivate {
 
   async isAuth(token: string) {
     const user: UserEntity = await AuthRedis.getToken(token);
-    if (user.create_goods === '1') {
+    if (user.create_commodity === '1') {
       return false;
     }
     return true;

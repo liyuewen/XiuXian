@@ -4,7 +4,7 @@ import {
   DamageTypeEnum,
   EquipmentPositionEnum,
   EquipmentTypeEnum,
-} from 'src/enum/goods.enum';
+} from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 /**

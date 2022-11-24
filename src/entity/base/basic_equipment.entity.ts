@@ -1,10 +1,10 @@
 import { IsNotEmpty } from 'class-validator';
 import { Column } from 'typeorm';
 import { BasicAttrEntity } from './basic_attr.entity';
-import { BasicGoodsEntity } from './basic_goods.entity';
+import { BasicCommodityEntity } from './basic_commodity.entity';
 
 export class BasicEquipment
-  extends BasicGoodsEntity
+  extends BasicCommodityEntity
   implements BasicAttrEntity
 {
   /**

@@ -11,17 +11,19 @@ import { MapModule } from './modules/map/map.module';
 import { RolesGuard } from './modules/auth/role_guard.service';
 import { MonsterModule } from './modules/monster/monster.module';
 import { FallModule } from './modules/fall/fall.module';
-import { WareModule } from './modules/ware/ware.module';
+import { CommodityModule } from './modules/commodity/commodity.module';
 import { CharacterModule } from './modules/character/character.module';
+import { DaoModule } from './dao/dao.module';
 
 @Module({
   imports: [
     UserModule,
     MapModule,
-    WareModule,
+    CommodityModule,
     MonsterModule,
     FallModule,
     CharacterModule,
+    DaoModule,
     TypeOrmModule.forRoot(AppConfig.mysql),
   ],
   controllers: [AppController],

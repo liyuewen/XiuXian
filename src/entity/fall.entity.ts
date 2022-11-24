@@ -1,13 +1,13 @@
-import { FallRelationTypeEnum } from 'src/enum/goods.enum';
+import { FallRelationTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicQuoteGoodsEntity } from './base/basic_quote_goods.entity';
+import { BasicQuoteCommodityEntity } from './base/basic_quote_commodity.entity';
 
 /**
  * 掉落表
  * 表示各个物品掉落的概率及其数量
  */
 @Entity('fall')
-export default class FallEntity extends BasicQuoteGoodsEntity {
+export default class FallEntity extends BasicQuoteCommodityEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

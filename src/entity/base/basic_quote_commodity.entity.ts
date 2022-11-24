@@ -1,30 +1,30 @@
 import { IsNotEmpty } from 'class-validator';
-import { GoodsTypeEnum } from 'src/enum/goods.enum';
+import { CommodityTypeEnum } from 'src/enum/commodity.enum';
 import { Column } from 'typeorm';
 import { BasicTimeEntity } from './basic_time.entity';
 
 /**
  * 物品引用基础实体
  */
-export abstract class BasicQuoteGoodsEntity extends BasicTimeEntity {
+export abstract class BasicQuoteCommodityEntity extends BasicTimeEntity {
   /**
    * 物品id
    */
   @Column()
   @IsNotEmpty()
-  goods_id: number;
+  commodity_id: number;
 
   @Column({
     type: 'enum',
-    enum: GoodsTypeEnum,
+    enum: CommodityTypeEnum,
   })
   @IsNotEmpty()
-  goods_type: GoodsTypeEnum;
+  commodity_type: CommodityTypeEnum;
 
   /**
    * 物品数量
    */
   @Column()
   @IsNotEmpty()
-  goods_count: number;
+  quantity: number;
 }

@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { GoodsTypeEnum } from 'src/enum/goods.enum';
+import { CommodityTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
@@ -13,28 +13,28 @@ export default class FormulaEntity {
   id: number;
 
   /**
-   * 材料id
+   * 物品id
    */
   @Column()
   @IsNotEmpty()
-  goods_id: number;
+  commodity_id: number;
 
   /**
-   * 材料类型
+   * 物品类型
    */
   @Column({
     type: 'enum',
-    enum: GoodsTypeEnum,
+    enum: CommodityTypeEnum,
   })
   @IsNotEmpty()
-  goods_type: GoodsTypeEnum;
+  commodity_type: CommodityTypeEnum;
 
   /**
-   * 材料数量
+   * 物品数量
    */
   @Column()
   @IsNotEmpty()
-  goods_count: number;
+  quantity: number;
 
   /**
    * 设计图id

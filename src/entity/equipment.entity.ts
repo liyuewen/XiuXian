@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { EquipmentPositionEnum, EquipmentTypeEnum, MaterialRarityEnum } from 'src/enum/goods.enum';
+import { EquipmentPositionEnum, EquipmentTypeEnum, MaterialRarityEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicEquipment } from './base/basic_equipment.entity';
 

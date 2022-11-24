@@ -8,7 +8,7 @@ export default class MaterialDao {
 
   async createMaterial(values: Omit<MaterialEntity, 'id'>) {
     const dataSource = this.dataSource;
-    
+
     try {
       const equipment = await dataSource
         .createQueryBuilder()
@@ -16,6 +16,23 @@ export default class MaterialDao {
         .into(MaterialEntity)
         .values(values)
         .execute();
+      return equipment;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getMaterialById(id: number) {
+    const dataSource = this.dataSource;
+    try {
+      const equipment = await dataSource
+        .createQueryBuilder()
+        .select()
+        .from(MaterialEntity, 'material')
+        .where('material.id = :id', {
+          id,
+        })
+        .getOne();
       return equipment;
     } catch (error) {
       throw error;
