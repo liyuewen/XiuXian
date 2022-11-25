@@ -6,22 +6,18 @@ import { DataSource } from 'typeorm';
 
 export type CharacterEntityType = Omit<
   CharacterEntity & PublicAttrEntity,
-  'id' | 'public_attr'
+  'id'
 >;
 
 @Injectable()
 export default class CharacterDao {
+  characterEntity = this.dataSource.getRepository(CharacterEntity);
+
   constructor(private dataSource: DataSource) {}
 
   async createCharacter(values: Partial<CharacterEntityType>) {
-    const dataSource = this.dataSource;
     try {
-      const character = await dataSource
-        .createQueryBuilder()
-        .insert()
-        .into<CharacterEntityType>(CharacterEntity)
-        .values(values)
-        .execute();
+      const character = await this.characterEntity.save(values);
       return character;
     } catch (error) {
       throw new ThrowError(`CharacterDao:createCharacter ${error}`);
