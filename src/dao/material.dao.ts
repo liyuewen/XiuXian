@@ -1,6 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import MaterialEntity from 'src/entity/material.entity';
+import { PublicCommodityEntity } from 'src/entity/public/public_commodity.entity';
 import { DataSource } from 'typeorm';
+
+export type MaterialEntityType = Omit<
+  MaterialEntity & PublicCommodityEntity,
+  'id' | 'public_commodity'
+>;
 
 @Injectable()
 export default class MaterialDao {
@@ -13,7 +19,7 @@ export default class MaterialDao {
       const equipment = await dataSource
         .createQueryBuilder()
         .insert()
-        .into(MaterialEntity)
+        .into<MaterialEntityType>(MaterialEntity)
         .values(values)
         .execute();
       return equipment;
@@ -26,7 +32,7 @@ export default class MaterialDao {
     const dataSource = this.dataSource;
     try {
       const equipment = await dataSource
-        .createQueryBuilder(MaterialEntity, 'material')
+        .createQueryBuilder<MaterialEntityType>(MaterialEntity, 'material')
         .where('material.id = :id', {
           id,
         })

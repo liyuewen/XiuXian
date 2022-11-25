@@ -1,6 +1,6 @@
 import { Column } from 'typeorm';
 
-export abstract class BasicAttrEntity {
+export class PublicAttrEntity {
   /**
    * 攻击力
    */

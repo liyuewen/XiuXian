@@ -6,12 +6,13 @@ import {
   EquipmentTypeEnum,
 } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BasicTimeEntity } from './basic/basic_time.entity';
 
 /**
  * 装备特效
  */
 @Entity('attribute')
-export default class AttributeEntity {
+export default class AttributeEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

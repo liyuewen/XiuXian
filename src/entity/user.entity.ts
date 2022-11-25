@@ -1,11 +1,12 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IsEmpty } from 'class-validator';
+import { BasicTimeEntity } from './basic/basic_time.entity';
 
 /**
  * 用户
  */
 @Entity('user')
-export default class UserEntity {
+export default class UserEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -16,14 +17,6 @@ export default class UserEntity {
   @Column()
   @IsEmpty()
   password: string;
-
-  @Column()
-  @IsEmpty()
-  created_at: Date;
-
-  @Column()
-  @IsEmpty()
-  updated_at: Date;
 
   @Column()
   @IsEmpty()

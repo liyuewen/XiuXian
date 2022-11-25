@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import KnapsackDao from 'src/dao/knapsack.dao';
+import KnapsackDao, { KnapsackEntityType } from 'src/dao/knapsack.dao';
 import KnapsackEntity from 'src/entity/knapsack.entity';
 import { CommodityService } from 'src/modules/commodity/commodity.service';
 import Utils from 'src/utils/utils';
@@ -16,7 +16,7 @@ export class KnapsackService {
    * 如果当前背包中的当前物品数量小于最大数量，则增加数量,增加后的数量如果
    * 如果当前背包中的当前物品数量等于最大数量，则插入一个新的
    */
-  async updateKnapsack(values: Omit<KnapsackEntity, 'id'>) {
+  async updateKnapsack(values: KnapsackEntityType) {
     const knapsack = await this.knapsackDao.getKnapsack(
       values.commodity_id,
       values.character_id,
@@ -48,8 +48,5 @@ export class KnapsackService {
   /**
    * 取出当前角色背包中的所有物品
    */
-  async arrangementKnapsack(character_id: number) {
-
-  }
-
+  async arrangementKnapsack(character_id: number) {}
 }

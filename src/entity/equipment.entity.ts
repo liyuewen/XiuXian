@@ -1,13 +1,19 @@
 import { IsNotEmpty } from 'class-validator';
-import { EquipmentPositionEnum, EquipmentTypeEnum, MaterialRarityEnum } from 'src/enum/commodity.enum';
+import {
+  EquipmentPositionEnum,
+  EquipmentTypeEnum,
+  MaterialRarityEnum,
+} from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicEquipment } from './base/basic_equipment.entity';
+import { BasicTimeEntity } from './basic/basic_time.entity';
+import { PublicAttrEntity } from './public/public_attr.entity';
+import { PublicCommodityEntity } from './public/public_commodity.entity';
 
 /**
  * 装备
  */
 @Entity('equipment')
-export default class EquipmentEntity extends BasicEquipment {
+export default class EquipmentEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -76,4 +82,10 @@ export default class EquipmentEntity extends BasicEquipment {
     enum: MaterialRarityEnum,
   })
   rarity: MaterialRarityEnum;
+
+  @Column(() => PublicCommodityEntity, { prefix: false })
+  public_commodity: PublicCommodityEntity;
+
+  @Column(() => PublicAttrEntity, { prefix: false })
+  public_attr: PublicAttrEntity;
 }

@@ -1,13 +1,14 @@
 import { IsNotEmpty } from 'class-validator';
-import { CommoditySourceEnum } from 'src/enum/commodity.enum';
+import { CommoditySourceEnum, CommodityTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicQuoteCommodityEntity } from './base/basic_quote_commodity.entity';
+import { BasicTimeEntity } from './basic/basic_time.entity';
+import { PublicCommodityEntity } from './public/public_commodity.entity';
 
 /**
  * 背包表
  */
 @Entity('knapsack')
-export default class KnapsackEntity extends BasicQuoteCommodityEntity {
+export default class KnapsackEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -17,6 +18,27 @@ export default class KnapsackEntity extends BasicQuoteCommodityEntity {
   @Column()
   @IsNotEmpty()
   character_id: number;
+
+  /**
+   * 商品id
+   */
+  @Column()
+  commodity_id: number;
+
+  /**
+   * 商品类型
+   */
+  @Column({
+    type: 'enum',
+    enum: CommodityTypeEnum,
+  })
+  commodity_type: CommodityTypeEnum;
+
+  @Column({
+    default: 1,
+  })
+  @IsNotEmpty()
+  quantity: number;
 
   /**
    * 物品来源
@@ -34,16 +56,8 @@ export default class KnapsackEntity extends BasicQuoteCommodityEntity {
   })
   sort: number;
 
-  @Column()
-  @IsNotEmpty()
-  created_at: Date;
-
-  @Column()
-  @IsNotEmpty()
-  updated_at: Date;
-
-  @Column()
-  delete_at: Date;
+  @Column(() => PublicCommodityEntity, { prefix: false })
+  public_commodity: PublicCommodityEntity;
 
   @Column()
   @IsNotEmpty()

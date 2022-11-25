@@ -1,6 +1,13 @@
 import { Injectable } from '@nestjs/common';
+import { PublicAttrEntity } from 'src/entity/public/public_attr.entity';
+import { PublicCommodityEntity } from 'src/entity/public/public_commodity.entity';
 import EquipmentEntity from 'src/entity/equipment.entity';
 import { DataSource } from 'typeorm';
+
+export type EquipmentEntityType = Omit<
+  EquipmentEntity & PublicCommodityEntity & PublicAttrEntity,
+  'id' | 'public_commodity' | 'public_attr'
+>;
 
 @Injectable()
 export default class EquipmentDao {
@@ -12,7 +19,7 @@ export default class EquipmentDao {
       const equipment = await dataSource
         .createQueryBuilder()
         .insert()
-        .into(EquipmentEntity)
+        .into<EquipmentEntityType>(EquipmentEntity)
         .values(values)
         .execute();
       return equipment;
@@ -25,7 +32,7 @@ export default class EquipmentDao {
     const dataSource = this.dataSource;
     try {
       const equipmentList = await dataSource
-        .getRepository(EquipmentEntity)
+        .getRepository<EquipmentEntityType>(EquipmentEntity)
         .createQueryBuilder('user')
         .getMany();
       return equipmentList;
@@ -38,7 +45,7 @@ export default class EquipmentDao {
     const dataSource = this.dataSource;
     try {
       const equipment = await dataSource
-        .createQueryBuilder(EquipmentEntity, 'equipment')
+        .createQueryBuilder<EquipmentEntityType>(EquipmentEntity, 'equipment')
         .where('equipment.id = :id', { id })
         .getOne();
       return equipment;

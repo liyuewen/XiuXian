@@ -2,11 +2,13 @@ import { Injectable } from '@nestjs/common';
 import UserEntity from 'src/entity/user.entity';
 import { DataSource } from 'typeorm';
 
+export type UserEntityType = Omit<UserEntity, 'id'>;
+
 @Injectable()
 export default class UserDao {
   constructor(private dataSource: DataSource) {}
 
-  async createUser(values: Omit<UserEntity, 'id' | 'last_login_ip'>) {
+  async createUser(values: Partial<UserEntityType>) {
     const dataSource = this.dataSource;
     try {
       const user = await dataSource

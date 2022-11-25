@@ -1,11 +1,12 @@
 import { RoomTypeEnum } from 'src/enum/map.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BasicTimeEntity } from './basic/basic_time.entity';
 
 /**
  * 房间表
  */
 @Entity('room')
-export default class RoomEntity {
+export default class RoomEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

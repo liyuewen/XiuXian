@@ -1,6 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
 import { DesignDrawingTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BasicTimeEntity } from './basic/basic_time.entity';
 
 export interface DesignDrawingFormula {
   /**
@@ -21,7 +22,7 @@ export interface DesignDrawingFormula {
  * 设计图
  */
 @Entity('design_drawing')
-export default class DesignDrawingEntity {
+export default class DesignDrawingEntity extends BasicTimeEntity {
 
   @PrimaryGeneratedColumn()
   id: number;

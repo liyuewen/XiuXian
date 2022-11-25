@@ -1,13 +1,14 @@
 import { IsNotEmpty } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicAttrEntity } from './base/basic_attr.entity';
+import { BasicTimeEntity } from './basic/basic_time.entity';
+import { PublicAttrEntity } from './public/public_attr.entity';
 
 /**
  * 怪物
  * TODO: 怪物的技能
  */
 @Entity('monster')
-export default class MonsterEntity extends BasicAttrEntity {
+export default class MonsterEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -43,4 +44,8 @@ export default class MonsterEntity extends BasicAttrEntity {
     default: '',
   })
   attribute_id: string;
+
+  @Column(type => PublicAttrEntity)
+  public_attr: PublicAttrEntity;
+
 }

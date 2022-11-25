@@ -1,13 +1,14 @@
 import { IsNotEmpty, IsIn, Length, Matches } from 'class-validator';
 import Regular from 'src/utils/regular';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicAttrEntity } from './base/basic_attr.entity';
+import { BasicTimeEntity } from './basic/basic_time.entity';
+import { PublicAttrEntity } from './public/public_attr.entity';
 
 /**
  * 角色
  */
 @Entity('character')
-export default class CharacterEntity extends BasicAttrEntity {
+export default class CharacterEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -76,4 +77,6 @@ export default class CharacterEntity extends BasicAttrEntity {
   @Column()
   knapsack_max: number;
 
+  @Column(() => PublicAttrEntity, { prefix: false })
+  public_attr: PublicAttrEntity;
 }

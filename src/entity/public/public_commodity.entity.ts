@@ -5,7 +5,7 @@ import { Column } from 'typeorm';
 /**
  * 物品基础实体
  */
-export abstract class BasicCommodityEntity {
+export class PublicCommodityEntity {
   /**
    * 物品名称
    */

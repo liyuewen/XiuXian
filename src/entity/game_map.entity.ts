@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './base/basic_time.entity';
+import { BasicTimeEntity } from './basic/basic_time.entity';
 
 /**
  * 地图

@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { KnapsackEntityType } from 'src/dao/knapsack.dao';
 import KnapsackEntity from 'src/entity/knapsack.entity';
 import { CommoditySourceEnum } from 'src/enum/commodity.enum';
 import Utils from 'src/utils/utils';
@@ -6,11 +7,9 @@ import { KnapsackService } from '../knapsack/knapsack.service';
 
 @Injectable()
 export class CreateService {
-  constructor(
-    private knapsackService: KnapsackService,
-  ) {}
+  constructor(private knapsackService: KnapsackService) {}
 
-  async createKnapsack(values: Omit<KnapsackEntity, 'id'>) {
+  async createKnapsack(values: KnapsackEntityType) {
     if (Utils.isObject(values)) {
       values.source = CommoditySourceEnum.admin;
     }

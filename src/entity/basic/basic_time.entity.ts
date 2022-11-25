@@ -1,6 +1,6 @@
 import { Column } from "typeorm";
 
-export abstract class BasicTimeEntity {
+export class BasicTimeEntity {
   @Column()
   created_at: Date;
 
