@@ -7,24 +7,14 @@ import { DataSource } from 'typeorm';
 
 @Injectable()
 export default class GameMapDao {
+
+  gameMap = this.dataSource.getRepository(GameMapEntity);
+
   constructor(private dataSource: DataSource) {}
 
   async getMap(type?: number): Promise<GameMapEntity[]> {
-    const dataSource = this.dataSource;
     try {
-      let map: GameMapEntity[] = [];
-      const createQueryBuilder = dataSource.createQueryBuilder(
-        GameMapEntity,
-        'game_map',
-      );
-      if (!!type) {
-        map = await createQueryBuilder
-          .where('game_map.type=:type', { type })
-          .getRawMany();
-      } else {
-        map = await createQueryBuilder.getRawMany();
-      }
-
+      const map = await this.gameMap.find()
       return map;
     } catch (error) {
       throw error;

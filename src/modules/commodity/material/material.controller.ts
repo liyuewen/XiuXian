@@ -1,4 +1,5 @@
-import { Body, Controller, Post, UseFilters, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseFilters, UseGuards } from '@nestjs/common';
+import { NoRootAuth } from 'src/decorator/auth';
 import { HttpExceptionFilter } from 'src/filter/http-exception/http-exception.filter';
 import { RoleCreate } from 'src/modules/auth/role_create.service';
 import { RequestBody } from 'src/types/request';
@@ -14,4 +15,11 @@ export class MaterialController {
   async create(@Body() body: RequestBody) {
     return await this.materialService.createMaterial(body);
   }
+
+  @Get('get')
+  @NoRootAuth()
+  async get(@Body() body: RequestBody) {
+    return await this.materialService.getMaterialById(body.id);
+  }
+
 }

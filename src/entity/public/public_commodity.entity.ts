@@ -11,7 +11,7 @@ export class PublicCommodityEntity {
    */
   @Column()
   @IsNotEmpty()
-  name: number;
+  name: string;
 
   /**
    * 物品描述

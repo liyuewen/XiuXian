@@ -6,17 +6,13 @@ export type UserEntityType = Omit<UserEntity, 'id'>;
 
 @Injectable()
 export default class UserDao {
+  user = this.dataSource.getRepository(UserEntity);
+
   constructor(private dataSource: DataSource) {}
 
   async createUser(values: Partial<UserEntityType>) {
-    const dataSource = this.dataSource;
     try {
-      const user = await dataSource
-        .createQueryBuilder()
-        .insert()
-        .into(UserEntity)
-        .values(values)
-        .execute();
+      const user = await this.user.save(values);
       return user;
     } catch (error) {
       throw error;
@@ -27,14 +23,8 @@ export default class UserDao {
     id: number,
     values: Partial<Omit<UserEntity, 'id' | 'username' | 'password'>>,
   ) {
-    const dataSource = this.dataSource;
     try {
-      const user = await dataSource
-        .createQueryBuilder()
-        .update(UserEntity)
-        .set(values)
-        .where('id = :id', { id })
-        .execute();
+      const user = await this.user.update(id, values);
       return user;
     } catch (error) {
       throw error;
@@ -42,14 +32,10 @@ export default class UserDao {
   }
 
   async login(username: string, password: string) {
-    const dataSource = this.dataSource;
     try {
-      const user = await dataSource
-        .getRepository(UserEntity)
-        .createQueryBuilder('user')
-        .where('user.username = :username', { username })
-        .andWhere('user.password = :password', { password })
-        .getOne();
+      const user = await this.user.findOne({
+        where: { username, password },
+      });
       return user;
     } catch (error) {
       throw error;
@@ -57,13 +43,8 @@ export default class UserDao {
   }
 
   async getUserName(name: string) {
-    const dataSource = this.dataSource;
     try {
-      const user = await dataSource
-        .getRepository(UserEntity)
-        .createQueryBuilder('user')
-        .where('user.username = :name', { name })
-        .getOne();
+      const user = await this.user.findOne({ where: { username: name } });
       return user;
     } catch (error) {
       throw error;

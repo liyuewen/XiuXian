@@ -6,17 +6,15 @@ import { DataSource } from 'typeorm';
 
 @Injectable()
 export default class SynthesisDao {
+  synthesis = this.dataSource.getRepository(SynthesisEntity);
+  designDrawing = this.dataSource.getRepository(DesignDrawingEntity);
+  formula = this.dataSource.getRepository(FormulaEntity);
+
   constructor(private dataSource: DataSource) {}
 
   async createSynthesis(values: Omit<SynthesisEntity, 'id'>) {
-    const dataSource = this.dataSource;
     try {
-      const synthesis = await dataSource
-        .createQueryBuilder()
-        .insert()
-        .into(SynthesisEntity)
-        .values(values)
-        .execute();
+      const synthesis = await this.synthesis.save(values);
       return synthesis;
     } catch (error) {
       throw error;
@@ -24,14 +22,8 @@ export default class SynthesisDao {
   }
 
   async creatDesignDrawing(values: Omit<DesignDrawingEntity, 'id'>) {
-    const dataSource = this.dataSource;
     try {
-      const designDrawing = await dataSource
-        .createQueryBuilder()
-        .insert()
-        .into(DesignDrawingEntity)
-        .values(values)
-        .execute();
+      const designDrawing = await this.designDrawing.save(values);
       return designDrawing;
     } catch (error) {
       throw error;
@@ -39,14 +31,8 @@ export default class SynthesisDao {
   }
 
   async createFormula(values: Omit<FormulaEntity, 'id'>) {
-    const dataSource = this.dataSource;
     try {
-      const formula = await dataSource
-        .createQueryBuilder()
-        .insert()
-        .into(FormulaEntity)
-        .values(values)
-        .execute();
+      const formula = await this.formula.save(values);
       return formula;
     } catch (error) {
       throw error;
@@ -54,30 +40,19 @@ export default class SynthesisDao {
   }
 
   async getSynthesisList(character_id?: number) {
-    const dataSource = this.dataSource;
     try {
-      const synthesisList = dataSource
-        .getRepository(SynthesisEntity)
-        .createQueryBuilder('synthesis');
-      if (!!character_id) {
-        return await synthesisList
-          .where('synthesis.character_id = :character_id', { character_id })
-          .getMany();
-      } else {
-        return await synthesisList.getMany();
-      }
+      const synthesisList = await this.synthesis.find({
+        where: { character_id },
+      });
+      return synthesisList;
     } catch (error) {
       throw error;
     }
   }
 
   async getDesignDrawingList() {
-    const dataSource = this.dataSource;
     try {
-      const designDrawingList = await dataSource
-        .getRepository(DesignDrawingEntity)
-        .createQueryBuilder('designDrawing')
-        .getMany();
+      const designDrawingList = await this.designDrawing.find();
       return designDrawingList;
     } catch (error) {
       throw error;

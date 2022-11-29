@@ -10,48 +10,43 @@ export type KnapsackEntityType = Omit<
 
 @Injectable()
 export default class KnapsackDao {
+  knapsack = this.dataSource.getRepository(KnapsackEntity);
+
   constructor(private dataSource: DataSource) {}
 
   async createKnapsack(values: KnapsackEntityType) {
-    const dataSource = this.dataSource;
-    const date = new Date();
-    values.created_at = date;
-    values.updated_at = date;
     try {
-      const knapsack = await dataSource
-        .createQueryBuilder()
-        .insert()
-        .into<KnapsackEntityType>(KnapsackEntity)
-        .values(values)
-        .execute();
+      const knapsack = await this.knapsack.save(values);
       return knapsack;
     } catch (error) {
       throw error;
     }
   }
 
-  async getKnapsackList(character_id: number) {
-    const dataSource = this.dataSource;
+  async getKnapsackListByCharacterId(characterId: number) {
     try {
-      const knapsack = await dataSource
-        .createQueryBuilder<KnapsackEntityType>(KnapsackEntity, 'knapsack')
-        .where('knapsack.character_id = :character_id', { character_id })
-        .getMany();
+      const knapsack = await this.knapsack.find({
+        where: {
+          character_id: characterId,
+        },
+      });
       return knapsack;
     } catch (error) {
       throw error;
     }
   }
 
-  async getKnapsack(character_id: number, commodity_id: number) {
-    const dataSource = this.dataSource;
+  async getKnapsackList(characterId: number, commodityId: number) {
     try {
-      const knapsack = await dataSource
-        .createQueryBuilder<KnapsackEntityType>(KnapsackEntity, 'knapsack')
-        .where('knapsack.character_id = :character_id', { character_id })
-        .andWhere('knapsack.commodity_id = :commodity_id', { commodity_id })
-        .orderBy('knapsack.quantity', 'ASC')
-        .getOne();
+      const knapsack = await this.knapsack.find({
+        where: {
+          character_id: characterId,
+          commodity_id: commodityId,
+        },
+        order: {
+          quantity: 'ASC',
+        },
+      });
       return knapsack;
     } catch (error) {
       throw error;
@@ -59,17 +54,8 @@ export default class KnapsackDao {
   }
 
   async updateKnapsack(values: Partial<KnapsackEntity>) {
-    const dataSource = this.dataSource;
-    values.updated_at = new Date();
     try {
-      const knapsack = await dataSource
-        .createQueryBuilder()
-        .update<KnapsackEntityType>(KnapsackEntity)
-        .set(values)
-        .where('id = :id', {
-          id: values.id,
-        })
-        .execute();
+      const knapsack = await this.knapsack.update(values.id, values);
       return knapsack;
     } catch (error) {
       throw error;

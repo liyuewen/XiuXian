@@ -4,17 +4,13 @@ import { DataSource } from 'typeorm';
 
 @Injectable()
 export default class MonsterDao {
+  monster = this.dataSource.getRepository(MonsterEntity);
+
   constructor(private dataSource: DataSource) {}
 
   async createMonster(values: Omit<MonsterEntity, 'id'>) {
-    const dataSource = this.dataSource;
     try {
-      const equipment = await dataSource
-        .createQueryBuilder()
-        .insert()
-        .into(MonsterEntity)
-        .values(values)
-        .execute();
+      const equipment = await this.monster.save(values);
       return equipment;
     } catch (error) {
       throw error;

@@ -11,13 +11,13 @@ export type CharacterEntityType = Omit<
 
 @Injectable()
 export default class CharacterDao {
-  characterEntity = this.dataSource.getRepository(CharacterEntity);
+  character = this.dataSource.getRepository(CharacterEntity);
 
   constructor(private dataSource: DataSource) {}
 
   async createCharacter(values: Partial<CharacterEntityType>) {
     try {
-      const character = await this.characterEntity.save(values);
+      const character = await this.character.save(values);
       return character;
     } catch (error) {
       throw new ThrowError(`CharacterDao:createCharacter ${error}`);
