@@ -79,7 +79,7 @@ export class UserService {
       scienceExp: 0,
       soulExp: 0,
       knapsackMaxCapacity: 20,
-      publicAttr: {
+      attr: {
         attack: 10,
         defense: 5,
         hp: 100,

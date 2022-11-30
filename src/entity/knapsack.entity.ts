@@ -62,7 +62,7 @@ export default class KnapsackEntity extends BasicTimeEntity {
   sort: number;
 
   @Column(() => PublicThingEntity, { prefix: false })
-  publicCommodity: PublicThingEntity;
+  thing: PublicThingEntity;
 
   @Column({
     name: 'created_by',

@@ -2,6 +2,7 @@ import { IsNotEmpty } from 'class-validator';
 import { CommodityTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicTimeEntity } from './basic/time.entity';
+import AssociateThingEntity from './public/associateThing.entity';
 
 /**
  * 配方表
@@ -14,31 +15,10 @@ export default class FormulaEntity extends BasicTimeEntity {
   id: number;
 
   /**
-   * 物品id
+   * 当前配方需要的物品
    */
-  @Column({
-    name: 'commodity_id',
-  })
-  @IsNotEmpty()
-  commodityId: number;
-
-  /**
-   * 物品类型
-   */
-  @Column({
-    type: 'enum',
-    enum: CommodityTypeEnum,
-    name: 'commodity_type',
-  })
-  @IsNotEmpty()
-  commodityType: CommodityTypeEnum;
-
-  /**
-   * 物品数量
-   */
-  @Column()
-  @IsNotEmpty()
-  quantity: number;
+  @Column(() => AssociateThingEntity, { prefix: false })
+  thing: AssociateThingEntity;
 
   /**
    * 设计图id

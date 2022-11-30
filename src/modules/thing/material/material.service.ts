@@ -12,7 +12,7 @@ export class MaterialService {
   async createMaterial(options: PublicThingEntity) {
     const values = await EntityCommon.verifyEntity(new PublicThingEntity(), options);
     const material = new MaterialEntity();
-    material.publicCommodity = values;
+    material.thing = values;
     const result = await this.materialDao.createMaterial(material);
     return {
       id: result.id,

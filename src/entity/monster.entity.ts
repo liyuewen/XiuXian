@@ -47,6 +47,6 @@ export default class MonsterEntity extends BasicTimeEntity {
   attributeId: string;
 
   @Column(type => PublicAttrEntity)
-  publicAttr: PublicAttrEntity;
+  attr: PublicAttrEntity;
 
 }

@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { RoleAdmin } from '../auth/roleAdmin.service';
-import { ThingModule } from './thing/thing.module';
+import { GiftThingModule } from './giftThing/giftThing.module';
 
 @Module({
-  imports: [ThingModule],
+  imports: [GiftThingModule],
   providers: [
     {
       provide: APP_GUARD,

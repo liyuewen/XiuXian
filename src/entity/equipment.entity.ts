@@ -2,7 +2,6 @@ import { IsNotEmpty } from 'class-validator';
 import {
   EquipmentPositionEnum,
   EquipmentTypeEnum,
-  MaterialRarityEnum,
 } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicTimeEntity } from './basic/time.entity';
@@ -70,8 +69,8 @@ export default class EquipmentEntity extends BasicTimeEntity {
   limitScienceLevel: number;
 
   @Column(() => PublicThingEntity, { prefix: false })
-  publicCommodity: PublicThingEntity;
+  thing: PublicThingEntity;
 
   @Column(() => PublicAttrEntity, { prefix: false })
-  publicAttr: PublicAttrEntity;
+  attr: PublicAttrEntity;
 }

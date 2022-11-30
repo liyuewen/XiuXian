@@ -90,5 +90,5 @@ export default class CharacterEntity extends BasicTimeEntity {
   knapsackMaxCapacity: number;
 
   @Column(() => PublicAttrEntity, { prefix: false })
-  publicAttr: PublicAttrEntity;
+  attr: PublicAttrEntity;
 }

@@ -11,5 +11,5 @@ export default class MaterialEntity extends BasicTimeEntity {
   id: number;
 
   @Column(() => PublicThingEntity, { prefix: false })
-  publicCommodity: PublicThingEntity;
+  thing: PublicThingEntity;
 }

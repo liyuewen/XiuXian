@@ -12,6 +12,6 @@ export default class TreasureChestEntity extends BasicTimeEntity {
   id: number;
 
   @Column(() => PublicThingEntity, { prefix: false })
-  publicCommodity: PublicThingEntity
+  thing: PublicThingEntity
 
 }

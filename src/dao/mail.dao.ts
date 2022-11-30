@@ -5,7 +5,6 @@ import { DataSource } from 'typeorm';
 
 @Injectable()
 export default class MailDao {
-
   mail = this.dataSource.getRepository(MailEntity);
   mailThing = this.dataSource.getRepository(MailThingEntity);
 
@@ -25,6 +24,15 @@ export default class MailDao {
       const equipment = await this.mail.findOne({
         where: { characterId },
       });
+      return equipment;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async createMailThing(values: MailThingEntity) {
+    try {
+      const equipment = await this.mailThing.save(values);
       return equipment;
     } catch (error) {
       throw error;

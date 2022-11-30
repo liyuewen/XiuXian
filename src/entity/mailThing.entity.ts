@@ -1,7 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
-import { CommodityTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicTimeEntity } from './basic/time.entity';
+import AssociateThingEntity from './public/associateThing.entity';
 
 /**
  * 邮件当中的物品
@@ -15,40 +15,20 @@ export default class MailThingEntity extends BasicTimeEntity {
     name: 'mail_id',
   })
   @IsNotEmpty()
-  mailId: string;
+  mailId: number;
 
   /**
-   * 物品id
+   * 当前配方需要的物品
    */
-  @Column({
-    name: 'commodity_id',
-  })
-  @IsNotEmpty()
-  commodityId: number;
-
-  /**
-   * 物品类型
-   */
-  @Column({
-    type: 'enum',
-    enum: CommodityTypeEnum,
-    name: 'commodity_type',
-  })
-  @IsNotEmpty()
-  commodityType: CommodityTypeEnum;
-
-  /**
-   * 物品数量
-   */
-  @Column()
-  @IsNotEmpty()
-  quantity: number;
+  @Column(() => AssociateThingEntity, { prefix: false })
+  thing: AssociateThingEntity;
 
   /**
    * 是否已经领取
    */
-  @Column()
+  @Column({
+    default: false,
+  })
   @IsNotEmpty()
   received: boolean;
-
 }

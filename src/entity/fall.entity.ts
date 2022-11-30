@@ -38,5 +38,5 @@ export default class FallEntity extends BasicTimeEntity {
   probability: number;
 
   @Column(() => PublicThingEntity, { prefix: false })
-  publicCommodity: PublicThingEntity;
+  thing: PublicThingEntity;
 }
