@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import HttpError from 'src/common/error/http_error';
-import GameMapDao from 'src/dao/game_map.dao';
+import HttpError from 'src/common/error/httpError';
+import GameMapDao from 'src/dao/gameMap.dao';
 import RoomEntity from 'src/entity/room.entity';
 import Utils from 'src/utils/utils';
 
@@ -15,11 +15,11 @@ export class RoomService {
    */
   async createRoom(values: Omit<RoomEntity, 'id'>) {
     await Utils.validateError(values, RoomEntity);
-    const countMap = await this.gameMapDao.isMap(values.game_map_id);
+    const countMap = await this.gameMapDao.isMap(values.gameMapId);
     if (countMap === 0) {
       throw new HttpError('地图不存在', 12404);
     }
-    const roomList = await this.gameMapDao.getRoomList(values.game_map_id);
+    const roomList = await this.gameMapDao.getRoomList(values.gameMapId);
     if (roomList.length === 0) {
       const result = await this.gameMapDao.createRoom(values);
     }else {

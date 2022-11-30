@@ -6,7 +6,7 @@ import {
   EquipmentTypeEnum,
 } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
 
 /**
  * 装备特效
@@ -48,9 +48,10 @@ export default class AttributeEntity extends BasicTimeEntity {
   @Column({
     type: 'enum',
     enum: EquipmentTypeEnum,
+    name: 'equipment_type',
   })
   @IsNotEmpty()
-  equipment_type: EquipmentTypeEnum;
+  equipmentType: EquipmentTypeEnum;
 
   /**
    * 特效属于那种法宝位置
@@ -68,9 +69,10 @@ export default class AttributeEntity extends BasicTimeEntity {
   @Column({
     type: 'enum',
     enum: AttributeTypeEnum,
+    name: 'attribute_type',
   })
   @IsNotEmpty()
-  attribute_type: AttributeTypeEnum;
+  attributeType: AttributeTypeEnum;
 
   /**
    * 触发概率
@@ -115,9 +117,10 @@ export default class AttributeEntity extends BasicTimeEntity {
   @Column({
     default: 0,
     type: 'tinyint',
+    name: 'cooling_time',
   })
   @IsNotEmpty()
-  cooling_time: number;
+  coolingTime: number;
 
   /**
    * 特效的伤害数据来源
@@ -125,6 +128,7 @@ export default class AttributeEntity extends BasicTimeEntity {
   @Column({
     type: 'enum',
     enum: DamageTypeEnum,
+    name: 'damage_type',
   })
-  damage_type: DamageTypeEnum;
+  damageType: DamageTypeEnum;
 }

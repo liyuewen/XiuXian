@@ -1,6 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { BasicTimeEntity } from './basic/basicTime.entity';
+import RoomEntity from './room.entity';
 
 /**
  * 地图
@@ -24,16 +25,20 @@ export default class GameMapEntity extends BasicTimeEntity {
   /**
    * 当前地图限制修为等级
    */
-  @Column()
+  @Column({
+    name: 'limit_xw_level',
+  })
   @IsNotEmpty()
-  limit_xw_level: number;
+  limitWwLevel: number;
 
   /**
    * 当前地图限制科技等级
    */
-  @Column()
+  @Column({
+    name: 'limit_science_level',
+  })
   @IsNotEmpty()
-  limit_kj_level: number;
+  limitScienceLevel: number;
 
   // /**
   //  * 地图类型

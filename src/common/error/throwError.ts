@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import HttpError from './http_error';
+import HttpError from './httpError';
 
 export default class ThrowError extends HttpError {
   constructor(

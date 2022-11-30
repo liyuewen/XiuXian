@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
-import { PublicCommodityEntity } from './public/public_commodity.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
+import { PublicCommodityEntity } from './public/publicCommodity.entity';
 
 /**
  * 材料
@@ -11,5 +11,5 @@ export default class MaterialEntity extends BasicTimeEntity {
   id: number;
 
   @Column(() => PublicCommodityEntity, { prefix: false })
-  public_commodity: PublicCommodityEntity;
+  publicCommodity: PublicCommodityEntity;
 }

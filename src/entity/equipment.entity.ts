@@ -5,9 +5,9 @@ import {
   MaterialRarityEnum,
 } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
-import { PublicAttrEntity } from './public/public_attr.entity';
-import { PublicCommodityEntity } from './public/public_commodity.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
+import { PublicAttrEntity } from './public/publicAttr.entity';
+import { PublicCommodityEntity } from './public/publicCommodity.entity';
 
 /**
  * 装备
@@ -49,8 +49,9 @@ export default class EquipmentEntity extends BasicTimeEntity {
   @Column({
     length: '20',
     default: '',
+    name: 'attribute_id',
   })
-  attribute_id: string;
+  attributeId: string;
 
   /**
    * 装备等级
@@ -62,16 +63,20 @@ export default class EquipmentEntity extends BasicTimeEntity {
   /**
    * 限制修为等级
    */
-  @Column()
+  @Column({
+    name: 'limit_xw_level',
+  })
   @IsNotEmpty()
-  limit_xw_level: number;
+  limitXwLevel: number;
 
   /**
    * 限制科技等级
    */
-  @Column()
+  @Column({
+    name: 'limit_science_level',
+  })
   @IsNotEmpty()
-  limit_kj_level: number;
+  limitScienceLevel: number;
 
   /**
    * 稀有度
@@ -84,8 +89,8 @@ export default class EquipmentEntity extends BasicTimeEntity {
   rarity: MaterialRarityEnum;
 
   @Column(() => PublicCommodityEntity, { prefix: false })
-  public_commodity: PublicCommodityEntity;
+  publicCommodity: PublicCommodityEntity;
 
   @Column(() => PublicAttrEntity, { prefix: false })
-  public_attr: PublicAttrEntity;
+  publicAttr: PublicAttrEntity;
 }

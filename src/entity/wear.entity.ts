@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
 
 /**
  * 角色装备穿戴表
@@ -18,12 +18,16 @@ export default class WearEntity extends BasicTimeEntity {
   /**
    * 装备id
    */
-  @Column()
-  equipment_id: string;
+  @Column({
+    name: 'equipment_id',
+  })
+  equipmentId: string;
 
   /**
    * 角色id
    */
-  @Column()
-  character_id: number;
+  @Column({
+    name: 'character_id',
+  })
+  characterId: number;
 }

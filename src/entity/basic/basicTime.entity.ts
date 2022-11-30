@@ -2,17 +2,22 @@ import { IsEmpty } from "class-validator";
 import { Column } from "typeorm";
 
 export class BasicTimeEntity {
-  @Column()
-  created_at: Date;
-
   @Column({
-    default: null,
+    default: () => "CURRENT_TIMESTAMP",
+    name: "created_at",
   })
-  updated_at: Date;
+  createdAt: Date;
 
   @Column({
     default: null,
+    name: "updated_at",
+  })
+  updatedAt: Date;
+
+  @Column({
+    default: null,
+    name: "deleted_at",
   })
   @IsEmpty()
-  delete_at: Date;
+  deleteAt: Date;
 }

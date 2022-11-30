@@ -38,8 +38,9 @@ export class PublicAttrEntity {
    */
   @Column({
     default: 0,
+    name: 'physical_strength',
   })
-  physical_strength: number;
+  physicalStrength: number;
 
   /**
    * 灵巧

@@ -22,11 +22,10 @@ export class CommodityService {
   ) {
     if (commodity_type === CommodityTypeEnum.material) {
       const material = await this.materialDao.getMaterialById(commodity_id);
-      // return material.max_quantity;
-      return 1
+      return material.publicCommodity.maxQuantity;
     } else if (commodity_type === CommodityTypeEnum.equipment) {
       const equipment = await this.equipmentDao.getEquipmentById(commodity_id);
-      return equipment.max_quantity;
+      return equipment.publicCommodity.maxQuantity
     }
   }
 }

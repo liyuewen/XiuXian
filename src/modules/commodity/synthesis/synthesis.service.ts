@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import SynthesisDao from 'src/dao/synthesis.dao';
-import DesignDrawingEntity from 'src/entity/design_drawing.entity';
+import DesignDrawingEntity from 'src/entity/designDrawing.entity';
 import FormulaEntity from 'src/entity/formula.entity';
 import Utils from 'src/utils/utils';
 

@@ -4,17 +4,13 @@ import { DataSource } from 'typeorm';
 
 @Injectable()
 export default class FallDao {
+  fall = this.dataSource.getRepository(FallEntity);
+
   constructor(private dataSource: DataSource) {}
 
   async createFall(values: Omit<FallEntity, 'id'>) {
-    const dataSource = this.dataSource;
     try {
-      const equipment = await dataSource
-        .createQueryBuilder()
-        .insert()
-        .into(FallEntity)
-        .values(values)
-        .execute();
+      const equipment = await this.fall.save(values);
       return equipment;
     } catch (error) {
       throw error;

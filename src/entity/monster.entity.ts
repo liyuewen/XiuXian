@@ -1,7 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
-import { PublicAttrEntity } from './public/public_attr.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
+import { PublicAttrEntity } from './public/publicAttr.entity';
 
 /**
  * 怪物
@@ -42,10 +42,11 @@ export default class MonsterEntity extends BasicTimeEntity {
    */
   @Column({
     default: '',
+    name: 'attribute_id',
   })
-  attribute_id: string;
+  attributeId: string;
 
   @Column(type => PublicAttrEntity)
-  public_attr: PublicAttrEntity;
+  publicAttr: PublicAttrEntity;
 
 }

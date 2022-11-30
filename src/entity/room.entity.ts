@@ -1,6 +1,6 @@
 import { RoomTypeEnum } from 'src/enum/map.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
 
 /**
  * 房间表
@@ -22,14 +22,18 @@ export default class RoomEntity extends BasicTimeEntity {
   /**
    * 关联id
    */
-  @Column()
-  game_map_id: number;
+  @Column({
+    name: 'game_map_id',
+  })
+  gameMapId: number;
 
   /**
    * 关联到当前房间怪物或者宝箱信息
    */
-  @Column()
-  connection_id: number;
+  @Column({
+    name: 'connection_id',
+  })
+  connectionId: number;
 
   /**
    * 用于处理当前房间的顺序

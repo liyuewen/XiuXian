@@ -3,7 +3,7 @@ import AttributeDao from './attribute.dao';
 import CharacterDao from './character.dao';
 import EquipmentDao from './equipment.dao';
 import FallDao from './fall.dao';
-import GameMapDao from './game_map.dao';
+import GameMapDao from './gameMap.dao';
 import KnapsackDao from './knapsack.dao';
 import MaterialDao from './material.dao';
 import MonsterDao from './monster.dao';

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import ThrowError from 'src/common/error/throw_error';
-import { PublicAttrEntity } from 'src/entity/public/public_attr.entity';
+import ThrowError from 'src/common/error/throwError';
+import { PublicAttrEntity } from 'src/entity/public/publicAttr.entity';
 import CharacterEntity from 'src/entity/character.entity';
 import { DataSource } from 'typeorm';
 

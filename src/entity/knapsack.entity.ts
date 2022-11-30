@@ -1,8 +1,8 @@
 import { IsNotEmpty } from 'class-validator';
 import { CommoditySourceEnum, CommodityTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
-import { PublicCommodityEntity } from './public/public_commodity.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
+import { PublicCommodityEntity } from './public/publicCommodity.entity';
 
 /**
  * 背包表
@@ -15,15 +15,19 @@ export default class KnapsackEntity extends BasicTimeEntity {
   /**
    * 用户id
    */
-  @Column()
+  @Column({
+    name: 'character_id',
+  })
   @IsNotEmpty()
-  character_id: number;
+  characterId: number;
 
   /**
    * 商品id
    */
-  @Column()
-  commodity_id: number;
+  @Column({
+    name: 'commodity_id',
+  })
+  commodityId: number;
 
   /**
    * 商品类型
@@ -31,8 +35,9 @@ export default class KnapsackEntity extends BasicTimeEntity {
   @Column({
     type: 'enum',
     enum: CommodityTypeEnum,
+    name: 'commodity_type',
   })
-  commodity_type: CommodityTypeEnum;
+  commodityType: CommodityTypeEnum;
 
   @Column({
     default: 1,
@@ -57,16 +62,22 @@ export default class KnapsackEntity extends BasicTimeEntity {
   sort: number;
 
   @Column(() => PublicCommodityEntity, { prefix: false })
-  public_commodity: PublicCommodityEntity;
+  publicCommodity: PublicCommodityEntity;
 
-  @Column()
+  @Column({
+    name: 'created_by',
+  })
   @IsNotEmpty()
-  created_by: number;
+  createdBy: number;
 
-  @Column()
+  @Column({
+    name: 'updated_by',
+  })
   @IsNotEmpty()
-  updated_by: number;
+  updatedBy: number;
 
-  @Column()
-  delete_by: number;
+  @Column({
+    name: 'deleted_by',
+  })
+  deletedBy: number;
 }

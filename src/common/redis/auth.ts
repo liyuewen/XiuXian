@@ -1,7 +1,7 @@
 import UserEntity from 'src/entity/user.entity';
 import Utils from 'src/utils/utils';
 import Redis from '.';
-import ThrowError from '../error/throw_error';
+import ThrowError from '../error/throwError';
 
 export default class AuthRedis extends Redis {
   /**

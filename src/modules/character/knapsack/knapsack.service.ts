@@ -17,25 +17,29 @@ export class KnapsackService {
    * 如果当前背包中的当前物品数量等于最大数量，则插入一个新的
    */
   async updateKnapsack(values: KnapsackEntityType) {
-    const knapsack = await this.knapsackDao.getKnapsack(
-      values.commodity_id,
-      values.character_id,
+    const knapsack = await this.knapsackDao.getKnapsackCommodity(
+      values.commodityId,
+      values.characterId,
     );
-    if (Utils.isExists(knapsack)) {
+    let knapsackCommodity!: KnapsackEntity;
+    if (knapsack.length > 0) {
+      knapsackCommodity = knapsack[0];
+    }
+    if (Utils.isExists(knapsackCommodity)) {
       const max_quantity = await this.commodityService.getCommodityMaxQuantity(
-        values.commodity_id,
-        values.commodity_type,
+        values.commodityId,
+        values.commodityType,
       );
-      const quantity = knapsack.quantity + values.quantity;
+      const quantity = knapsackCommodity.quantity + values.quantity;
       const diffQuantity = quantity - max_quantity;
 
       if (diffQuantity <= 0) {
-        knapsack.quantity = quantity;
-        await this.knapsackDao.updateKnapsack(knapsack);
+        knapsackCommodity.quantity = quantity;
+        await this.knapsackDao.updateKnapsack(knapsackCommodity);
       }
       if (diffQuantity > 0) {
-        knapsack.quantity = max_quantity;
-        await this.knapsackDao.updateKnapsack(knapsack);
+        knapsackCommodity.quantity = max_quantity;
+        await this.knapsackDao.updateKnapsack(knapsackCommodity);
         values.quantity = diffQuantity;
         await this.knapsackDao.createKnapsack(values);
       }

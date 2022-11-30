@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import DesignDrawingEntity from 'src/entity/design_drawing.entity';
+import DesignDrawingEntity from 'src/entity/designDrawing.entity';
 import FormulaEntity from 'src/entity/formula.entity';
 import SynthesisEntity from 'src/entity/synthesis.entity';
 import { DataSource } from 'typeorm';
@@ -39,10 +39,10 @@ export default class SynthesisDao {
     }
   }
 
-  async getSynthesisList(character_id?: number) {
+  async getSynthesisList(characterId?: number) {
     try {
       const synthesisList = await this.synthesis.find({
-        where: { character_id },
+        where: { characterId },
       });
       return synthesisList;
     } catch (error) {

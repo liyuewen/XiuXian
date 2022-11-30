@@ -1,7 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
 import { DesignDrawingTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
 
 export interface DesignDrawingFormula {
   /**
@@ -23,7 +23,6 @@ export interface DesignDrawingFormula {
  */
 @Entity('design_drawing')
 export default class DesignDrawingEntity extends BasicTimeEntity {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -35,7 +34,7 @@ export default class DesignDrawingEntity extends BasicTimeEntity {
    * 目标合成物类型
    */
   @Column({
-    type: "enum",
+    type: 'enum',
     enum: DesignDrawingTypeEnum,
   })
   @IsNotEmpty()
@@ -44,30 +43,38 @@ export default class DesignDrawingEntity extends BasicTimeEntity {
   /**
    * 目标合成物id
    */
-  @Column()
+  @Column({
+    name: 'composite_id',
+  })
   @IsNotEmpty()
-  composite_id: number;
+  compositeId: number;
 
   /**
    * 学习所需要的科技等级
    */
-  @Column()
+  @Column({
+    name: 'science_level',
+  })
   @IsNotEmpty()
-  kj_level: number;
+  scienceLevel: number;
 
   /**
    * 推荐炼制的等级
    */
-  @Column()
+  @Column({
+    name: 'recommend_science_level',
+  })
   @IsNotEmpty()
-  recommend_kj_level: number;
+  recommendScienceLevel: number;
 
   /**
    * 制作成功率
    */
-  @Column()
+  @Column({
+    name: 'success_rate',
+  })
   @IsNotEmpty()
-  success_rate: number;
+  successRate: number;
 
   /**
    * 科技对转换率的加成
@@ -77,7 +84,7 @@ export default class DesignDrawingEntity extends BasicTimeEntity {
    */
   @Column({
     default: 10,
+    name: 'factor',
   })
-  kj_factor: number;
-
+  factor: number;
 }

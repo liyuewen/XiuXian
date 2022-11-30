@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import KnapsackEntity from 'src/entity/knapsack.entity';
-import { PublicCommodityEntity } from 'src/entity/public/public_commodity.entity';
+import { PublicCommodityEntity } from 'src/entity/public/publicCommodity.entity';
 import { DataSource } from 'typeorm';
 
 export type KnapsackEntityType = Omit<
@@ -27,7 +27,7 @@ export default class KnapsackDao {
     try {
       const knapsack = await this.knapsack.find({
         where: {
-          character_id: characterId,
+          characterId,
         },
       });
       return knapsack;
@@ -36,12 +36,12 @@ export default class KnapsackDao {
     }
   }
 
-  async getKnapsackList(characterId: number, commodityId: number) {
+  async getKnapsackCommodity(characterId: number, commodityId: number) {
     try {
       const knapsack = await this.knapsack.find({
         where: {
-          character_id: characterId,
-          commodity_id: commodityId,
+          characterId,
+          commodityId,
         },
         order: {
           quantity: 'ASC',

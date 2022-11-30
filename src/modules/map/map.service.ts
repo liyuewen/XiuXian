@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import GameMapDao from 'src/dao/game_map.dao';
-import GameMapEntity from 'src/entity/game_map.entity';
+import GameMapDao from 'src/dao/gameMap.dao';
+import GameMapEntity from 'src/entity/gameMap.entity';
 import Utils from 'src/utils/utils';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class MapService {
 
   async getMapDetails(id: number) {
     const map = await this.gameMapDao.getMapDetails(id);
-    return true;
+    return map;
   }
 
   async createMap(map: Omit<GameMapEntity, 'id'>) {

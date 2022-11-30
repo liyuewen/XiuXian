@@ -1,7 +1,7 @@
 import { FallRelationTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
-import { PublicCommodityEntity } from './public/public_commodity.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
+import { PublicCommodityEntity } from './public/publicCommodity.entity';
 
 /**
  * 掉落表
@@ -16,8 +16,10 @@ export default class FallEntity extends BasicTimeEntity {
    * 一般只有怪物，任务才会掉落东西
    * 而当前id就是怪物或者任务的id
    */
-  @Column()
-  relation_id: number;
+  @Column({
+    name: 'relation_id',
+  })
+  relationId: number;
 
   /**
    * 1:怪物 2:任务
@@ -25,8 +27,9 @@ export default class FallEntity extends BasicTimeEntity {
   @Column({
     type: 'enum',
     enum: FallRelationTypeEnum,
+    name: 'relation_type',
   })
-  relation_type: FallRelationTypeEnum;
+  relationType: FallRelationTypeEnum;
 
   /**
    * 掉落物品几率
@@ -35,5 +38,5 @@ export default class FallEntity extends BasicTimeEntity {
   probability: number;
 
   @Column(() => PublicCommodityEntity, { prefix: false })
-  public_commodity: PublicCommodityEntity;
+  publicCommodity: PublicCommodityEntity;
 }

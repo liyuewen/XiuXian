@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { PublicAttrEntity } from 'src/entity/public/public_attr.entity';
-import { PublicCommodityEntity } from 'src/entity/public/public_commodity.entity';
+import { PublicAttrEntity } from 'src/entity/public/publicAttr.entity';
+import { PublicCommodityEntity } from 'src/entity/public/publicCommodity.entity';
 import EquipmentEntity from 'src/entity/equipment.entity';
 import { DataSource } from 'typeorm';
 
@@ -11,17 +11,13 @@ export type EquipmentEntityType = Omit<
 
 @Injectable()
 export default class EquipmentDao {
+  equipment = this.dataSource.getRepository(EquipmentEntity);
+
   constructor(private dataSource: DataSource) {}
 
   async createEquipment(values: Omit<EquipmentEntity, 'id'>) {
-    const dataSource = this.dataSource;
     try {
-      const equipment = await dataSource
-        .createQueryBuilder()
-        .insert()
-        .into<EquipmentEntityType>(EquipmentEntity)
-        .values(values)
-        .execute();
+      const equipment = await this.equipment.save(values);
       return equipment;
     } catch (error) {
       throw error;
@@ -29,12 +25,8 @@ export default class EquipmentDao {
   }
 
   async getEquipmentList() {
-    const dataSource = this.dataSource;
     try {
-      const equipmentList = await dataSource
-        .getRepository<EquipmentEntityType>(EquipmentEntity)
-        .createQueryBuilder('user')
-        .getMany();
+      const equipmentList = await this.equipment.find();
       return equipmentList;
     } catch (error) {
       throw error;
@@ -42,12 +34,10 @@ export default class EquipmentDao {
   }
 
   async getEquipmentById(id: number) {
-    const dataSource = this.dataSource;
     try {
-      const equipment = await dataSource
-        .createQueryBuilder<EquipmentEntityType>(EquipmentEntity, 'equipment')
-        .where('equipment.id = :id', { id })
-        .getOne();
+      const equipment = await this.equipment.findOne({
+        where: { id },
+      });
       return equipment;
     } catch (error) {
       throw error;

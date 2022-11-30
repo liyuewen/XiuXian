@@ -29,9 +29,10 @@ export class PublicCommodityEntity {
    */
   @Column({
     default: 999,
+    name: 'max_quantity',
   })
   @IsNotEmpty()
-  max_quantity: number;
+  maxQuantity: number;
 
   /**
    * 稀有度

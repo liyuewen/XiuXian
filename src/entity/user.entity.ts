@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IsEmpty } from 'class-validator';
-import { BasicTimeEntity } from './basic/basic_time.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
 
 /**
  * 用户
@@ -18,9 +18,11 @@ export default class UserEntity extends BasicTimeEntity {
   @IsEmpty()
   password: string;
 
-  @Column()
+  @Column({
+    name: 'last_login_time',
+  })
   @IsEmpty()
-  last_login_time: Date;
+  lastLoginTime: Date;
 
   /**
    * 0:普通用户
@@ -29,17 +31,19 @@ export default class UserEntity extends BasicTimeEntity {
   @Column({
     type: 'enum',
     enum: ['0', '1'],
+    name: 'create_commodity',
   })
-  create_commodity: string;
+  createCommodity: string;
 
   /**
    * 注册地ip
    */
   @Column({
     length: 128,
+    name: 'register_ip',
   })
   @IsEmpty()
-  register_ip: string;
+  registerIp: string;
 
   /**
    * 常登陆地ip
@@ -47,8 +51,9 @@ export default class UserEntity extends BasicTimeEntity {
   @Column({
     length: 128,
     default: '',
+    name: 'common_ip',
   })
-  common_ip: string;
+  commonIp: string;
 
   /**
    * 最后登陆地ip
@@ -56,12 +61,15 @@ export default class UserEntity extends BasicTimeEntity {
   @Column({
     length: 128,
     default: '',
+    name: 'last_login_ip',
   })
-  last_login_ip: string;
+  lastLoginIp: string;
 
   /**
    * 用户角色
    */
-  @Column()
-  character_id: number;
+  @Column({
+    name: 'character_id',
+  })
+  characterId: number;
 }

@@ -1,8 +1,8 @@
 import { IsNotEmpty, IsIn, Length, Matches } from 'class-validator';
 import Regular from 'src/utils/regular';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basic_time.entity';
-import { PublicAttrEntity } from './public/public_attr.entity';
+import { BasicTimeEntity } from './basic/basicTime.entity';
+import { PublicAttrEntity } from './public/publicAttr.entity';
 
 /**
  * 角色
@@ -26,38 +26,48 @@ export default class CharacterEntity extends BasicTimeEntity {
   /**
    * 修为等级
    */
-  @Column()
-  xw_level: number;
+  @Column({name: 'xw_level'})
+  xwLevel: number;
 
   /**
    * 科技等级
    */
-  @Column()
-  kj_level: number;
+  @Column({
+    name: 'science_level',
+  })
+  scienceLevel: number;
 
   /**
    * 灵魂等级
    */
-  @Column()
-  soul_level: number;
+  @Column({
+    name: 'soul_level',
+  })
+  soulLevel: number;
 
   /**
    * 修为经验
    */
-  @Column()
-  xw_exp: number;
+  @Column({
+    name: 'xw_exp',
+  })
+  xwExp: number;
 
   /**
    * 科技经验
    */
-  @Column()
-  kj_exp: number;
+  @Column({
+    name: 'science_exp',
+  })
+  scienceExp: number;
 
   /**
    * 灵魂经验
    */
-  @Column()
-  soul_exp: number;
+  @Column({
+    name: 'soul_exp',
+  })
+  soulExp: number;
 
   /**
    * 1:男 2:女
@@ -74,9 +84,11 @@ export default class CharacterEntity extends BasicTimeEntity {
   /**
    * 背包最大容量
    */
-  @Column()
-  knapsack_max: number;
+  @Column({
+    name: 'knapsack_max_capacity',
+  })
+  knapsackMaxCapacity: number;
 
   @Column(() => PublicAttrEntity, { prefix: false })
-  public_attr: PublicAttrEntity;
+  publicAttr: PublicAttrEntity;
 }
