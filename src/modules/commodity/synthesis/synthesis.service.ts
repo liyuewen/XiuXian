@@ -2,22 +2,31 @@ import { Injectable } from '@nestjs/common';
 import SynthesisDao from 'src/dao/synthesis.dao';
 import DesignDrawingEntity from 'src/entity/designDrawing.entity';
 import FormulaEntity from 'src/entity/formula.entity';
-import Utils from 'src/utils/utils';
+import EntityCommon from 'src/utils/entityCommon';
 
 @Injectable()
 export class SynthesisService {
   constructor(private synthesisDao: SynthesisDao) {}
 
-  async createFormula(values: Omit<FormulaEntity, 'id'>) {
-    await Utils.validateError(values, FormulaEntity);
+  async createFormula(options: Omit<FormulaEntity, 'id'>) {
+    const values = await EntityCommon.verifyEntity(
+      new FormulaEntity(),
+      options,
+    );
     const formula = await this.synthesisDao.createFormula(values);
-    return true;
+    return {
+      id: formula.id,
+    };
   }
 
-  async creatDesignDrawing(values: Omit<DesignDrawingEntity, 'id'>) {
-    await Utils.validateError(values, DesignDrawingEntity);
+  async creatDesignDrawing(options: Omit<DesignDrawingEntity, 'id'>) {
+    const values = await EntityCommon.verifyEntity(
+      new DesignDrawingEntity(),
+      options,
+    );
     const designDrawing = await this.synthesisDao.creatDesignDrawing(values);
-    return true;
+    return {
+      id: designDrawing.id,
+    };
   }
-
 }

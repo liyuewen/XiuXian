@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { IsEmpty } from 'class-validator';
+import { IsEmpty, IsNotEmpty } from 'class-validator';
 import { BasicTimeEntity } from './basic/basicTime.entity';
 
 /**
@@ -11,17 +11,17 @@ export default class UserEntity extends BasicTimeEntity {
   id: number;
 
   @Column()
-  @IsEmpty()
+  @IsNotEmpty()
   username: string;
 
   @Column()
-  @IsEmpty()
+  @IsNotEmpty()
   password: string;
 
   @Column({
     name: 'last_login_time',
   })
-  @IsEmpty()
+  @IsNotEmpty()
   lastLoginTime: Date;
 
   /**
@@ -42,7 +42,7 @@ export default class UserEntity extends BasicTimeEntity {
     length: 128,
     name: 'register_ip',
   })
-  @IsEmpty()
+  @IsNotEmpty()
   registerIp: string;
 
   /**

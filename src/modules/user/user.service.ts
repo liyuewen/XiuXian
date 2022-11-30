@@ -4,9 +4,10 @@ import Utils from 'src/utils/utils';
 import UserDao from 'src/dao/user.dao';
 import CharacterDao from 'src/dao/character.dao';
 import CharacterEntity from 'src/entity/character.entity';
-import Redis from 'src/common/redis';
 import HttpError from 'src/common/error/httpError';
 import AuthRedis from 'src/common/redis/auth';
+import EntityCommon from 'src/utils/entityCommon';
+import UserEntity from 'src/entity/user.entity';
 // root uf854adqw666
 @Injectable()
 export class UserService {
@@ -20,7 +21,7 @@ export class UserService {
     const ip = Utils.getIp(req);
     const passwordMd5 = this.passwordMd5(password);
     const date = new Date();
-    const saveUser = await this.userDao.createUser({
+    const character = await EntityCommon.verifyEntity(new UserEntity(), {
       username: username,
       password: passwordMd5,
       registerIp: ip,
@@ -29,8 +30,11 @@ export class UserService {
       lastLoginTime: date,
       createCommodity: '0',
     });
+    const saveUser = await this.userDao.createUser(character);
     if (saveUser) {
-      return true;
+      return {
+        id: saveUser.id,
+      };
     }
     throw new HttpError('注册失败，请重试', 10012);
   }
@@ -65,8 +69,7 @@ export class UserService {
   }
 
   async createCharacter(name: string, sex: number) {
-    await Utils.validateError({ name, sex }, CharacterEntity);
-    await this.characterDao.createCharacter({
+    const character = await EntityCommon.verifyEntity(new CharacterEntity(), {
       name: name,
       xwLevel: 0,
       scienceLevel: 0,
@@ -86,7 +89,10 @@ export class UserService {
         lucky: 5,
       },
     });
-    return true;
+    const result = await this.characterDao.createCharacter(character);
+    return {
+      id: result.id,
+    };
   }
 
   passwordMd5(password: string) {

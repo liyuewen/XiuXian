@@ -4,17 +4,13 @@ import { DataSource } from 'typeorm';
 
 @Injectable()
 export default class AttributeDao {
+  attribute = this.dataSource.getRepository(AttributeEntity);
+
   constructor(private dataSource: DataSource) {}
 
-  async createAttribute(values: Omit<AttributeEntity, 'id'>) {
-    const dataSource = this.dataSource;
+  async createAttribute(values: AttributeEntity) {
     try {
-      const equipment = await dataSource
-        .createQueryBuilder()
-        .insert()
-        .into(AttributeEntity)
-        .values(values)
-        .execute();
+      const equipment = await this.attribute.save(values);
       return equipment;
     } catch (error) {
       throw error;

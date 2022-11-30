@@ -1,13 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import ThrowError from 'src/common/error/throwError';
-import { PublicAttrEntity } from 'src/entity/public/publicAttr.entity';
 import CharacterEntity from 'src/entity/character.entity';
 import { DataSource } from 'typeorm';
-
-export type CharacterEntityType = Omit<
-  CharacterEntity & PublicAttrEntity,
-  'id'
->;
 
 @Injectable()
 export default class CharacterDao {
@@ -15,7 +9,7 @@ export default class CharacterDao {
 
   constructor(private dataSource: DataSource) {}
 
-  async createCharacter(values: Partial<CharacterEntityType>) {
+  async createCharacter(values: CharacterEntity) {
     try {
       const character = await this.character.save(values);
       return character;

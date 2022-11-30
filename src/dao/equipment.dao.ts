@@ -1,13 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { PublicAttrEntity } from 'src/entity/public/publicAttr.entity';
-import { PublicCommodityEntity } from 'src/entity/public/publicCommodity.entity';
 import EquipmentEntity from 'src/entity/equipment.entity';
 import { DataSource } from 'typeorm';
-
-export type EquipmentEntityType = Omit<
-  EquipmentEntity & PublicCommodityEntity & PublicAttrEntity,
-  'id' | 'public_commodity' | 'public_attr'
->;
 
 @Injectable()
 export default class EquipmentDao {
@@ -15,7 +8,7 @@ export default class EquipmentDao {
 
   constructor(private dataSource: DataSource) {}
 
-  async createEquipment(values: Omit<EquipmentEntity, 'id'>) {
+  async createEquipment(values: EquipmentEntity) {
     try {
       const equipment = await this.equipment.save(values);
       return equipment;

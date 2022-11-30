@@ -19,6 +19,15 @@ export default class Utils {
   }
 
   /**
+   * 是否是对象
+   * @param value
+   * @returns
+   */
+  static isObject(value: any): value is Object {
+    return Object.prototype.toString.call(value) == '[object Object]';
+  }
+
+  /**
    * 生成随机数
    */
   static randomNum(max = 32) {
@@ -94,41 +103,10 @@ export default class Utils {
     return nums;
   }
 
-  /**
-   * 用于返回当前实体的验证错误第一条错误信息
-   * @param object 当前数据对象
-   * @param model 当前数据对象的实体类
-   * @returns
-   */
-  static async validateError(object: object, model: new () => object) {
-    const validateModel = new model();
-    for (const key in object) {
-      if (Object.prototype.hasOwnProperty.call(object, key)) {
-        validateModel[key] = object[key];
-      }
-    }
-    const val = await validate(validateModel);
-    if (val.length > 0) {
-      let validation = val[0];
-      let errors = Object.values(validation.constraints);
-      throw errors[0];
-    }
-    return '';
-  }
-
   static token(id: number) {
     const time = new Date().getTime().toString();
     const num = this.randomNum(32);
     const md5 = this.cryptoJS.MD5(time + num + id).toString();
     return md5 + num;
-  }
-
-  /**
-   * 是否是对象
-   * @param value
-   * @returns
-   */
-  static isObject(value: any): value is Object {
-    return Object.prototype.toString.call(value) == '[object Object]';
   }
 }
