@@ -4,14 +4,18 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicTimeEntity } from './basic/time.entity';
 
 /**
- * 配方表
- * 通过设计图的id来关联对应的配方
- * 后面可能增加其他用途
+ * 邮件当中的物品
  */
-@Entity('formula')
-export default class FormulaEntity extends BasicTimeEntity {
+@Entity('mail_thing')
+export default class MailThingEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column({
+    name: 'mail_id',
+  })
+  @IsNotEmpty()
+  mailId: string;
 
   /**
    * 物品id
@@ -41,11 +45,10 @@ export default class FormulaEntity extends BasicTimeEntity {
   quantity: number;
 
   /**
-   * 设计图id
+   * 是否已经领取
    */
-  @Column({
-    name: 'design_drawing_id',
-  })
+  @Column()
   @IsNotEmpty()
-  designDrawingId: number;
+  received: boolean;
+
 }

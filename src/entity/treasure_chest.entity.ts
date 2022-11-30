@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basicTime.entity';
-import { PublicCommodityEntity } from './public/publicCommodity.entity';
+import { BasicTimeEntity } from './basic/time.entity';
+import { PublicThingEntity } from './public/thing.entity';
 
 /**
  * 宝箱表
@@ -11,7 +11,7 @@ export default class TreasureChestEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column(() => PublicCommodityEntity, { prefix: false })
-  publicCommodity: PublicCommodityEntity
+  @Column(() => PublicThingEntity, { prefix: false })
+  publicCommodity: PublicThingEntity
 
 }

@@ -1,6 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import AttributeDao from './attribute.dao';
 import CharacterDao from './character.dao';
+import DesignDrawingDao from './designDrawing.dao';
 import EquipmentDao from './equipment.dao';
 import FallDao from './fall.dao';
 import GameMapDao from './gameMap.dao';
@@ -23,6 +24,7 @@ import UserDao from './user.dao';
     MonsterDao,
     SynthesisDao,
     UserDao,
+    DesignDrawingDao,
   ],
   exports: [
     MaterialDao,
@@ -35,6 +37,7 @@ import UserDao from './user.dao';
     MonsterDao,
     SynthesisDao,
     UserDao,
+    DesignDrawingDao
   ],
 })
 export class DaoModule {}

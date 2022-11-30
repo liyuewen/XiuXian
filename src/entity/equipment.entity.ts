@@ -5,9 +5,9 @@ import {
   MaterialRarityEnum,
 } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basicTime.entity';
-import { PublicAttrEntity } from './public/publicAttr.entity';
-import { PublicCommodityEntity } from './public/publicCommodity.entity';
+import { BasicTimeEntity } from './basic/time.entity';
+import { PublicAttrEntity } from './public/attr.entity';
+import { PublicThingEntity } from './public/thing.entity';
 
 /**
  * 装备
@@ -23,15 +23,6 @@ export default class EquipmentEntity extends BasicTimeEntity {
   })
   @IsNotEmpty()
   position: EquipmentPositionEnum;
-
-  /**
-   * 装备描述
-   */
-  @Column({
-    length: '50',
-    default: '',
-  })
-  desc: string;
 
   /**
    * 法宝类型
@@ -78,18 +69,8 @@ export default class EquipmentEntity extends BasicTimeEntity {
   @IsNotEmpty()
   limitScienceLevel: number;
 
-  /**
-   * 稀有度
-   * 暂时影响的是出特效是特效的上限
-   */
-  @Column({
-    type: 'enum',
-    enum: MaterialRarityEnum,
-  })
-  rarity: MaterialRarityEnum;
-
-  @Column(() => PublicCommodityEntity, { prefix: false })
-  publicCommodity: PublicCommodityEntity;
+  @Column(() => PublicThingEntity, { prefix: false })
+  publicCommodity: PublicThingEntity;
 
   @Column(() => PublicAttrEntity, { prefix: false })
   publicAttr: PublicAttrEntity;

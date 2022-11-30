@@ -1,5 +1,8 @@
 import { Column } from 'typeorm';
 
+/**
+ * 面板的基础实体
+ */
 export class PublicAttrEntity {
   /**
    * 攻击力

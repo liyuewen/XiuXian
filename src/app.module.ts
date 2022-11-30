@@ -11,7 +11,7 @@ import { MapModule } from './modules/map/map.module';
 import { RolesGuard } from './modules/auth/roleGuard.service';
 import { MonsterModule } from './modules/monster/monster.module';
 import { FallModule } from './modules/fall/fall.module';
-import { CommodityModule } from './modules/commodity/commodity.module';
+import { CommodityModule } from './modules/thing/commodity.module';
 import { CharacterModule } from './modules/character/character.module';
 import { DaoModule } from './dao/dao.module';
 

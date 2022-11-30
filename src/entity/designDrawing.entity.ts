@@ -1,22 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
 import { DesignDrawingTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basicTime.entity';
-
-export interface DesignDrawingFormula {
-  /**
-   * 装备id
-   */
-  equipment_id: number;
-  /**
-   * 材料id
-   */
-  material_id: number;
-  /**
-   * 材料数量
-   */
-  amount: number;
-}
+import { BasicTimeEntity } from './basic/time.entity';
 
 /**
  * 设计图

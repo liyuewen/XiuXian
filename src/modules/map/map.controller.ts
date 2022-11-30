@@ -11,11 +11,11 @@ import HttpError from 'src/common/error/httpError';
 import { NoRootAuth } from 'src/decorator/auth';
 import { HttpExceptionFilter } from 'src/filter/httpException/httpException.filter';
 import { RequestBody } from 'src/types/request';
-import { RoleCreate } from '../auth/roleCreate.service';
+import { RoleAdmin } from '../auth/roleAdmin.service';
 import { MapService } from './map.service';
 import { RoomService } from './room.service';
 
-@UseGuards(RoleCreate)
+@UseGuards(RoleAdmin)
 @Controller('map')
 @UseFilters(HttpExceptionFilter)
 export class MapController {

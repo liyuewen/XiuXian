@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IsEmpty, IsNotEmpty } from 'class-validator';
-import { BasicTimeEntity } from './basic/basicTime.entity';
+import { BasicTimeEntity } from './basic/time.entity';
 
 /**
  * 用户

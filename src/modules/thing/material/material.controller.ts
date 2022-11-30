@@ -1,12 +1,12 @@
 import { Body, Controller, Get, Post, UseFilters, UseGuards } from '@nestjs/common';
 import { NoRootAuth } from 'src/decorator/auth';
 import { HttpExceptionFilter } from 'src/filter/httpException/httpException.filter';
-import { RoleCreate } from 'src/modules/auth/roleCreate.service';
+import { RoleAdmin } from 'src/modules/auth/roleAdmin.service';
 import { RequestBody } from 'src/types/request';
 import { MaterialService } from './material.service';
 
-@UseGuards(RoleCreate)
-@Controller('/ware/material')
+@UseGuards(RoleAdmin)
+@Controller('/thing/material')
 @UseFilters(HttpExceptionFilter)
 export class MaterialController {
   constructor(private readonly materialService: MaterialService) {}

@@ -8,7 +8,7 @@ import UserEntity from 'src/entity/user.entity';
  * 用于判断用户是否有权限创建物品
  */
 @Injectable()
-export class RoleCreate implements CanActivate {
+export class RoleAdmin implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {

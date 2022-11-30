@@ -3,30 +3,45 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BasicTimeEntity } from './basic/time.entity';
 
 /**
- * 角色合成表，用于记录角色已经学习的设计图的信息
+ * 邮件表
  */
-@Entity('synthesis')
-export default class SynthesisEntity extends BasicTimeEntity {
-
+@Entity('mail')
+export default class MailEntity extends BasicTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  /**
-   * 设计图id
-   */
   @Column({
-    name: 'design_drawing_id',
+    length: 50,
   })
   @IsNotEmpty()
-  designDrawingId: number;
+  title: string;
+
+  @Column()
+  content: string;
 
   /**
-   * 角色id
+   * 发送者id
+   */
+  @Column({
+    name: 'created_by',
+  })
+  @IsNotEmpty()
+  createdBy: number;
+
+  /**
+   * 接收者id
    */
   @Column({
     name: 'character_id',
   })
   @IsNotEmpty()
   characterId: number;
+
+  /**
+   * 是否已读
+   */
+  @Column()
+  @IsNotEmpty()
+  read: boolean;
 
 }

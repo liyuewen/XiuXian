@@ -1,7 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basicTime.entity';
-import { PublicAttrEntity } from './public/publicAttr.entity';
+import { BasicTimeEntity } from './basic/time.entity';
+import { PublicAttrEntity } from './public/attr.entity';
 
 /**
  * 怪物

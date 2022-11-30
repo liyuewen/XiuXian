@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basicTime.entity';
+import { BasicTimeEntity } from './basic/time.entity';
 
 /**
  * ip表, 用于记录用户ip,处理常用ip

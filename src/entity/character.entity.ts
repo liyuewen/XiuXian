@@ -1,8 +1,8 @@
 import { IsNotEmpty, IsIn, Length, Matches } from 'class-validator';
 import Regular from 'src/utils/regular';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basicTime.entity';
-import { PublicAttrEntity } from './public/publicAttr.entity';
+import { BasicTimeEntity } from './basic/time.entity';
+import { PublicAttrEntity } from './public/attr.entity';
 
 /**
  * 角色

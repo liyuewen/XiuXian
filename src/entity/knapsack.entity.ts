@@ -1,8 +1,8 @@
 import { IsNotEmpty } from 'class-validator';
 import { CommoditySourceEnum, CommodityTypeEnum } from 'src/enum/commodity.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basicTime.entity';
-import { PublicCommodityEntity } from './public/publicCommodity.entity';
+import { BasicTimeEntity } from './basic/time.entity';
+import { PublicThingEntity } from './public/thing.entity';
 
 /**
  * 背包表
@@ -61,8 +61,8 @@ export default class KnapsackEntity extends BasicTimeEntity {
   })
   sort: number;
 
-  @Column(() => PublicCommodityEntity, { prefix: false })
-  publicCommodity: PublicCommodityEntity;
+  @Column(() => PublicThingEntity, { prefix: false })
+  publicCommodity: PublicThingEntity;
 
   @Column({
     name: 'created_by',

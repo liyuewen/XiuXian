@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import MaterialDao from 'src/dao/material.dao';
 import MaterialEntity from 'src/entity/material.entity';
-import { PublicCommodityEntity } from 'src/entity/public/publicCommodity.entity';
+import { PublicThingEntity } from 'src/entity/public/thing.entity';
 import EntityCommon from 'src/utils/entityCommon';
 import Utils from 'src/utils/utils';
 
@@ -9,8 +9,8 @@ import Utils from 'src/utils/utils';
 export class MaterialService {
   constructor(private materialDao: MaterialDao) {}
 
-  async createMaterial(options: PublicCommodityEntity) {
-    const values = await EntityCommon.verifyEntity(new PublicCommodityEntity(), options);
+  async createMaterial(options: PublicThingEntity) {
+    const values = await EntityCommon.verifyEntity(new PublicThingEntity(), options);
     const material = new MaterialEntity();
     material.publicCommodity = values;
     const result = await this.materialDao.createMaterial(material);

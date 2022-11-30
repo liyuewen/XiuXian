@@ -3,12 +3,11 @@ import { EquipmentModule } from './equipment/equipment.module';
 import { MaterialModule } from './material/material.module';
 import { SynthesisModule } from './synthesis/synthesis.module';
 import { CommodityService } from './commodity.service';
-import MaterialDao from 'src/dao/material.dao';
-import EquipmentDao from 'src/dao/equipment.dao';
+import { DesignDrawingModule } from './design/design.module';
 
 @Global()
 @Module({
-  imports: [EquipmentModule, MaterialModule, SynthesisModule],
+  imports: [EquipmentModule, MaterialModule, SynthesisModule, DesignDrawingModule],
   providers: [CommodityService],
   exports: [CommodityService],
 })

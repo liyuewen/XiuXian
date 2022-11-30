@@ -5,7 +5,7 @@ import { Column } from 'typeorm';
 /**
  * 物品基础实体
  */
-export class PublicCommodityEntity {
+export class PublicThingEntity {
   /**
    * 物品名称
    */
@@ -16,9 +16,20 @@ export class PublicCommodityEntity {
   /**
    * 物品描述
    */
-  @Column()
+  @Column({
+    length: '100',
+  })
   @IsNotEmpty()
   desc: string;
+
+  /**
+   * 是否账号绑定
+   */
+  @Column({
+    default: false,
+  })
+  @IsNotEmpty()
+  bind: boolean;
 
   /**
    * 物品堆叠上限

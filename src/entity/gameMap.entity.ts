@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { BasicTimeEntity } from './basic/basicTime.entity';
+import { BasicTimeEntity } from './basic/time.entity';
 import RoomEntity from './room.entity';
 
 /**

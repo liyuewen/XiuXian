@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import KnapsackEntity from 'src/entity/knapsack.entity';
 import { CommoditySourceEnum } from 'src/enum/commodity.enum';
 import EntityCommon from 'src/utils/entityCommon';
-import Utils from 'src/utils/utils';
 import { KnapsackService } from '../knapsack/knapsack.service';
 
 @Injectable()
@@ -19,4 +18,5 @@ export class CreateService {
       id: result.id,
     };
   }
+  
 }
