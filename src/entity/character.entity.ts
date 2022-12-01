@@ -24,6 +24,15 @@ export default class CharacterEntity extends BasicTimeEntity {
   name: string;
 
   /**
+   * 用户id
+   */
+  @Column({
+    name: 'user_id',
+  })
+  @IsNotEmpty()
+  userId: number;
+
+  /**
    * 修为等级
    */
   @Column({name: 'xw_level'})

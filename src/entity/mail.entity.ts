@@ -16,20 +16,13 @@ export default class MailEntity extends BasicTimeEntity {
   @IsNotEmpty()
   title: string;
 
-  @Column()
+  @Column({
+    default: '',
+  })
   content: string;
 
   /**
-   * 发送者id
-   */
-  @Column({
-    name: 'created_by',
-  })
-  @IsNotEmpty()
-  createdBy: number;
-
-  /**
-   * 接收者id
+   * 发送的角色id
    */
   @Column({
     name: 'character_id',
@@ -38,10 +31,25 @@ export default class MailEntity extends BasicTimeEntity {
   characterId: number;
 
   /**
+   * 接收者的角色id
+   */
+  @Column({
+    name: 'receiver_id',
+  })
+  @IsNotEmpty()
+  receiverId: number;
+
+  /**
    * 是否已读
    */
-  @Column()
-  @IsNotEmpty()
+  @Column({
+    default: false,
+  })
   read: boolean;
 
+  @Column({
+    name: 'created_by',
+  })
+  @IsNotEmpty()
+  createdBy: number;
 }

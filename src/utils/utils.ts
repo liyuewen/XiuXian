@@ -28,6 +28,15 @@ export default class Utils {
   }
 
   /**
+   * 是否数组
+   * @param value
+   * @returns
+   */
+  static isArray<T extends Array<any>>(value: T | any): value is T {
+    return Object.prototype.toString.call(value) == '[object Array]';
+  }
+
+  /**
    * 生成随机数
    */
   static randomNum(max = 32) {
@@ -109,4 +118,11 @@ export default class Utils {
     const md5 = this.cryptoJS.MD5(time + num + id).toString();
     return md5 + num;
   }
+
+  static getHeaderToken(req: Request) {
+    const token = req.headers['token'];
+    if (!token) return '';
+    return token.toString();
+  }
+
 }

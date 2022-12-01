@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import KnapsackDao from 'src/dao/knapsack.dao';
 import KnapsackEntity from 'src/entity/knapsack.entity';
-import { CommodityService } from 'src/modules/thing/commodity.service';
+import { CommodityService } from 'src/modules/base/thing/commodity.service';
 import Utils from 'src/utils/utils';
 
 @Injectable()

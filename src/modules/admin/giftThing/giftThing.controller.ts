@@ -1,17 +1,15 @@
-import { Body, Controller, Post, UseFilters } from '@nestjs/common';
+import { Body, Controller, Post, Req, UseFilters } from '@nestjs/common';
 import { HttpExceptionFilter } from 'src/filter/httpException/httpException.filter';
-import { RequestBody } from 'src/types/request';
 import { GiftThingOptions, GiftThingService } from './giftThing.service';
+import { Request } from 'express';
 
 @Controller('admin/giftThing')
 @UseFilters(HttpExceptionFilter)
 export class GiftThingController {
+  constructor(private thingService: GiftThingService) {}
 
-  constructor(private thingService: GiftThingService) { }
-
-  @Post("send")
-  async send(@Body() body: GiftThingOptions) {
-    return await this.thingService.send(body);
+  @Post('send')
+  async send(@Body() body: GiftThingOptions, @Req() req: Request) {
+    return await this.thingService.send(body, req);
   }
-
 }

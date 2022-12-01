@@ -8,6 +8,7 @@ import HttpError from 'src/common/error/httpError';
 import AuthRedis from 'src/common/redis/auth';
 import EntityCommon from 'src/utils/entityCommon';
 import UserEntity from 'src/entity/user.entity';
+
 // root uf854adqw666
 @Injectable()
 export class UserService {
@@ -26,7 +27,6 @@ export class UserService {
       password: passwordMd5,
       registerIp: ip,
       commonIp: ip,
-      characterId: 0,
       lastLoginTime: date,
       createCommodity: '0',
     });
@@ -68,10 +68,13 @@ export class UserService {
     throw new HttpError('登录失败', 10014);
   }
 
-  async createCharacter(name: string, sex: number) {
+  async createCharacter(name: string, sex: number, req: Request) {
+    const token = Utils.getHeaderToken(req);
+    const createdBy = await AuthRedis.getToken(token);
     const character = await EntityCommon.verifyEntity(new CharacterEntity(), {
       name: name,
       xwLevel: 0,
+      userId: createdBy.id,
       scienceLevel: 0,
       sex: sex,
       soulLevel: 0,

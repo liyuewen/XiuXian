@@ -11,7 +11,7 @@ import HttpError from 'src/common/error/httpError';
 import { NoRootAuth } from 'src/decorator/auth';
 import { HttpExceptionFilter } from 'src/filter/httpException/httpException.filter';
 import { RequestBody } from 'src/types/request';
-import { RoleAdmin } from '../auth/roleAdmin.service';
+import { RoleAdmin } from '../../auth/roleAdmin.service';
 import { MapService } from './map.service';
 import { RoomService } from './room.service';
 

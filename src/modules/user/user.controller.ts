@@ -1,10 +1,4 @@
-import {
-  Body,
-  Controller,
-  Post,
-  Req,
-  UseFilters,
-} from '@nestjs/common';
+import { Body, Controller, Post, Req, UseFilters } from '@nestjs/common';
 import { Request } from 'express';
 import HttpError from 'src/common/error/httpError';
 import { NoAuth } from 'src/decorator/auth';
@@ -39,7 +33,10 @@ export class UserController {
   }
 
   @Post('/character')
-  async createCharacter(@Body() body: { name: string; sex: number }) {
-    return await this.userService.createCharacter(body.name, body.sex);
+  async createCharacter(
+    @Body() body: { name: string; sex: number },
+    @Req() req: Request,
+  ) {
+    return await this.userService.createCharacter(body.name, body.sex, req);
   }
 }

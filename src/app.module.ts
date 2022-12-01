@@ -7,23 +7,27 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppConfig } from './config/app.config';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { HttpExceptionFilter } from './filter/httpException/httpException.filter';
-import { MapModule } from './modules/map/map.module';
+import { MapModule } from './modules/base/map/map.module';
 import { RolesGuard } from './modules/auth/roleGuard.service';
-import { MonsterModule } from './modules/monster/monster.module';
-import { FallModule } from './modules/fall/fall.module';
-import { CommodityModule } from './modules/thing/commodity.module';
+import { MonsterModule } from './modules/base/monster/monster.module';
+import { FallModule } from './modules/base/fall/fall.module';
+import { CommodityModule } from './modules/base/thing/commodity.module';
 import { CharacterModule } from './modules/character/character.module';
 import { DaoModule } from './dao/dao.module';
+import { MailModule } from './modules/mail/mail.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
+    DaoModule,
     UserModule,
     MapModule,
     CommodityModule,
     MonsterModule,
     FallModule,
     CharacterModule,
-    DaoModule,
+    MailModule,
+    AdminModule,
     TypeOrmModule.forRoot(AppConfig.mysql),
   ],
   controllers: [AppController],

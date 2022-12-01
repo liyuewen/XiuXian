@@ -9,7 +9,7 @@ import {
 import { NoRootAuth } from 'src/decorator/auth';
 import { HttpExceptionFilter } from 'src/filter/httpException/httpException.filter';
 import { RequestBody } from 'src/types/request';
-import { RoleAdmin } from '../../auth/roleAdmin.service';
+import { RoleAdmin } from 'src/modules/auth/roleAdmin.service';
 import { AttributeService } from './attribute.service';
 import { EquipmentService } from './equipment.service';
 

@@ -17,4 +17,15 @@ export default class CharacterDao {
       throw new ThrowError(`CharacterDao:createCharacter ${error}`);
     }
   }
+
+  async getCharacterById(id: number) {
+    try {
+      const character = await this.character.findOne({
+        where: { id },
+      });
+      return character;
+    } catch (error) {
+      throw new ThrowError(`CharacterDao:getCharacterById ${error}`);
+    }
+  }
 }

@@ -65,11 +65,4 @@ export default class UserEntity extends BasicTimeEntity {
   })
   lastLoginIp: string;
 
-  /**
-   * 用户角色
-   */
-  @Column({
-    name: 'character_id',
-  })
-  characterId: number;
 }

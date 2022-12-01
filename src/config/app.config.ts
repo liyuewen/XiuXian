@@ -8,9 +8,6 @@ interface AppConfigType {
     redis.RedisFunctions,
     redis.RedisScripts
   >;
-  jwtConstants: {
-    jwtKey: string;
-  };
 }
 
 export const AppConfig: AppConfigType = {
@@ -26,8 +23,5 @@ export const AppConfig: AppConfigType = {
   },
   redis: {
     url: 'redis://127.0.0.1:6379',
-  },
-  jwtConstants: {
-    jwtKey: 'secretKey',
-  },
+  }
 };

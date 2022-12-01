@@ -29,6 +29,5 @@ export default class MailThingEntity extends BasicTimeEntity {
   @Column({
     default: false,
   })
-  @IsNotEmpty()
   received: boolean;
 }
