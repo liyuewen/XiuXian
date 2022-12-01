@@ -1,5 +1,5 @@
 import { validate } from 'class-validator';
-import Utils from './utils';
+import Utils from '../../utils/utils';
 
 interface VerifyEntityOptions<T> {
   groups?: string[];

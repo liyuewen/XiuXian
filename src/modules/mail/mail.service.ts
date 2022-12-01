@@ -5,8 +5,9 @@ import MailDao from 'src/dao/mail.dao';
 import MailEntity from 'src/entity/mail.entity';
 import MailThingEntity from 'src/entity/mailThing.entity';
 import AssociateThingEntity from 'src/entity/public/associateThing.entity';
-import EntityCommon from 'src/utils/entityCommon';
+import EntityCommon from 'src/common/typeorm/entityCommon';
 import Utils from 'src/utils/utils';
+import AuthRedis from 'src/common/redis/auth';
 
 export interface MailOptions extends Partial<MailEntity> {
   title: string;
@@ -58,14 +59,16 @@ export class MailService {
     });
     return await Promise.all(map);
   }
+
+  /**
+   * 获取收件人的所有邮件
+   * 不传收件人id默认查询自己的
+   * @param receiverId 收件人id
+   * @param page
+   * @param size
+   * @returns
+   */
+  async getMailList(receiverId: number, page: number, size: number) {
+    return await this.mailDao.getMailByReceiverId(receiverId, page, size);
+  }
 }
-
-interface Test {
-  a: number;
-  b: number;
-  c: any;
-}
-
-let a: Exclude<keyof Test, Test> = 'a';
-
-console.log(a);

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import MonsterDao from 'src/dao/monster.dao';
 import MonsterEntity from 'src/entity/monster.entity';
-import EntityCommon from 'src/utils/entityCommon';
+import EntityCommon from 'src/common/typeorm/entityCommon';
 import Utils from 'src/utils/utils';
 
 @Injectable()

@@ -6,7 +6,7 @@ import CharacterDao from 'src/dao/character.dao';
 import CharacterEntity from 'src/entity/character.entity';
 import HttpError from 'src/common/error/httpError';
 import AuthRedis from 'src/common/redis/auth';
-import EntityCommon from 'src/utils/entityCommon';
+import EntityCommon from 'src/common/typeorm/entityCommon';
 import UserEntity from 'src/entity/user.entity';
 
 // root uf854adqw666

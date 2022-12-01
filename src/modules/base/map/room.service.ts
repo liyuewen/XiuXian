@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import HttpError from 'src/common/error/httpError';
 import GameMapDao from 'src/dao/gameMap.dao';
 import RoomEntity from 'src/entity/room.entity';
-import EntityCommon from 'src/utils/entityCommon';
+import EntityCommon from 'src/common/typeorm/entityCommon';
 import Utils from 'src/utils/utils';
 
 @Injectable()

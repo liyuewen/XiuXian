@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import Paging from 'src/common/typeorm/paging';
 import MailEntity from 'src/entity/mail.entity';
 import MailThingEntity from 'src/entity/mailThing.entity';
 import { DataSource } from 'typeorm';
@@ -19,12 +20,20 @@ export default class MailDao {
     }
   }
 
-  async getMailByCharacterId(characterId: number) {
+  /**
+   * 查询接收人所有邮件，并且是未删除的
+   * @param receiverId 接收人id
+   * @param page 当前页码
+   * @param size 每页数据量
+   */
+  async getMailByReceiverId(receiverId: number, page: number, size: number) {
     try {
-      const equipment = await this.mail.findOne({
-        where: { characterId },
+      const [data, total] = await this.mail.findAndCount({
+        where: { receiverId, deletedAt: null },
+        order: { createdAt: 'DESC' },
+        ...Paging.handlePagingParams(page, size),
       });
-      return equipment;
+      return Paging.getPagingData(data, page, size, total);
     } catch (error) {
       throw error;
     }

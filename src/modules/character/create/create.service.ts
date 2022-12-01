@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import KnapsackEntity from 'src/entity/knapsack.entity';
 import { CommoditySourceEnum } from 'src/enum/commodity.enum';
-import EntityCommon from 'src/utils/entityCommon';
+import EntityCommon from 'src/common/typeorm/entityCommon';
 import { KnapsackService } from '../knapsack/knapsack.service';
 
 @Injectable()

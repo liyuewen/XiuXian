@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import EquipmentDao from 'src/dao/equipment.dao';
 import EquipmentEntity from 'src/entity/equipment.entity';
-import EntityCommon from 'src/utils/entityCommon';
+import EntityCommon from 'src/common/typeorm/entityCommon';
 
 @Injectable()
 export class EquipmentService {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import GameMapDao from 'src/dao/gameMap.dao';
 import GameMapEntity from 'src/entity/gameMap.entity';
-import EntityCommon from 'src/utils/entityCommon';
+import EntityCommon from 'src/common/typeorm/entityCommon';
 
 @Injectable()
 export class MapService {

@@ -37,6 +37,15 @@ export default class Utils {
   }
 
   /**
+   * 是否是数字
+   * @param value
+   * @returns
+   */
+  static isNumber(value: any): value is Number {
+    return Object.prototype.toString.call(value) == '[object Number]';
+  }
+
+  /**
    * 生成随机数
    */
   static randomNum(max = 32) {
@@ -124,5 +133,4 @@ export default class Utils {
     if (!token) return '';
     return token.toString();
   }
-
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import FallDao from 'src/dao/fall.dao';
 import FallEntity from 'src/entity/fall.entity';
-import EntityCommon from 'src/utils/entityCommon';
+import EntityCommon from 'src/common/typeorm/entityCommon';
 
 @Injectable()
 export class FallService {

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import DesignDrawingDao from 'src/dao/designDrawing.dao';
 import DesignDrawingEntity from 'src/entity/designDrawing.entity';
 import FormulaEntity from 'src/entity/formula.entity';
-import EntityCommon from 'src/utils/entityCommon';
+import EntityCommon from 'src/common/typeorm/entityCommon';
 
 @Injectable()
 export class DesignService {

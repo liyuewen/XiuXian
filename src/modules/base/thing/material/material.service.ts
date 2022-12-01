@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import MaterialDao from 'src/dao/material.dao';
 import MaterialEntity from 'src/entity/material.entity';
 import { PublicThingEntity } from 'src/entity/public/thing.entity';
-import EntityCommon from 'src/utils/entityCommon';
+import EntityCommon from 'src/common/typeorm/entityCommon';
 import Utils from 'src/utils/utils';
 
 @Injectable()
