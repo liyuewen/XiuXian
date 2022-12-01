@@ -39,6 +39,17 @@ export default class MailDao {
     }
   }
 
+  async getMailThingByMailId(mailId: number) {
+    try {
+      const data = await this.mailThing.findOne({
+        where: { mailId },
+      });
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async createMailThing(values: MailThingEntity) {
     try {
       const equipment = await this.mailThing.save(values);
