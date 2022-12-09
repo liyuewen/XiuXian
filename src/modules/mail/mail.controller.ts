@@ -12,7 +12,16 @@ export class MailController {
     @Query('pageSize') pageSize: number,
     @Headers('token') token: string,
   ) {
-    console.log(token);
-    return await this.mailService.getMailList(receiverId, page, pageSize, token);
+    return await this.mailService.getMailList(
+      receiverId,
+      page,
+      pageSize,
+      token,
+    );
+  }
+
+  @Get('getMail')
+  async getMail(@Query('mailId') mailId: number, @Headers('token') token: string) {
+    return await this.mailService.getMailById(mailId, token);
   }
 }

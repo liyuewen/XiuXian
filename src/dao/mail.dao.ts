@@ -39,9 +39,30 @@ export default class MailDao {
     }
   }
 
+  /**
+   * 获取邮件详情
+   * @param mailId 
+   * @returns 
+   */
+  async getMailById(mailId: number) {
+    try {
+      const data = await this.mail.findOne({
+        where: { id: mailId },
+      });
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
+   * 获取邮件物品
+   * @param mailId 
+   * @returns 
+   */
   async getMailThingByMailId(mailId: number) {
     try {
-      const data = await this.mailThing.findOne({
+      const data = await this.mailThing.find({
         where: { mailId },
       });
       return data;
