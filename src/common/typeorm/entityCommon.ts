@@ -38,7 +38,7 @@ export default class EntityCommon {
     return validateModel;
   }
 
-  static setEntity<T extends Object>(
+  private static setEntity<T extends Object>(
     entity: T,
     values: Partial<Pick<T, keyof T>>,
     groups: string[] = [],

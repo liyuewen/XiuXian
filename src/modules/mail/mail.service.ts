@@ -68,7 +68,18 @@ export class MailService {
    * @param size
    * @returns
    */
-  async getMailList(receiverId: number, page: number, size: number) {
-    return await this.mailDao.getMailByReceiverId(receiverId, page, size);
+  async getMailList(
+    receiverId: number,
+    page: number,
+    size: number,
+    token: string,
+  ) {
+    const user = await AuthRedis.getToken(token);
+    const character = await this.characterDao.getCharacterByUserId(user.id);
+    const temp = character.findIndex((item) => item.id === Number(receiverId));
+    if (temp !== -1) {
+      return await this.mailDao.getMailByReceiverId(receiverId, page, size);
+    }
+    throw new HttpError('收件人不是当前用户');
   }
 }

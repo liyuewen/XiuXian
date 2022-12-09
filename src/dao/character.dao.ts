@@ -28,4 +28,15 @@ export default class CharacterDao {
       throw new ThrowError(`CharacterDao:getCharacterById ${error}`);
     }
   }
+
+  async getCharacterByUserId(userId: number) {
+    try {
+      const character = await this.character.find({
+        where: { userId },
+      });
+      return character;
+    } catch (error) {
+      throw new ThrowError(`CharacterDao:getCharacterByUserId ${error}`);
+    }
+  }
 }

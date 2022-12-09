@@ -38,4 +38,4 @@ lerna-debug.log*
 功能.md
 
 # temp
-/src/config/app.config.ts
+/src/config/*

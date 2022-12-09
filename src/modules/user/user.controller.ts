@@ -12,15 +12,11 @@ export class UserController {
 
   @NoAuth()
   @Post('/login')
-  login(
+  async login(
     @Body() body: { username: string; password: string },
     @Req() req: Request,
   ) {
-    try {
-      return this.userService.login(body.username, body.password, req);
-    } catch (error) {
-      throw new HttpError(error, 10000);
-    }
+    return await this.userService.login(body.username, body.password, req);
   }
 
   @NoAuth()

@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import DesignDrawingEntity from 'src/entity/designDrawing.entity';
-import FormulaEntity from 'src/entity/formula.entity';
 import SynthesisEntity from 'src/entity/synthesis.entity';
 import { DataSource } from 'typeorm';
 
@@ -10,7 +8,7 @@ export default class SynthesisDao {
 
   constructor(private dataSource: DataSource) {}
 
-  async createSynthesis(values: Omit<SynthesisEntity, 'id'>) {
+  async createSynthesis(values: SynthesisEntity) {
     try {
       const synthesis = await this.synthesis.save(values);
       return synthesis;
