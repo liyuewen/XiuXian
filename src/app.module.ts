@@ -16,6 +16,7 @@ import { CharacterModule } from './modules/character/character.module';
 import { DaoModule } from './dao/dao.module';
 import { MailModule } from './modules/mail/mail.module';
 import { AdminModule } from './modules/admin/admin.module';
+import { SocketModule } from './modules/socket/socket.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { AdminModule } from './modules/admin/admin.module';
     CharacterModule,
     MailModule,
     AdminModule,
+    SocketModule,
     TypeOrmModule.forRoot(AppConfig.mysql),
   ],
   controllers: [AppController],

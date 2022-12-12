@@ -727,13 +727,21 @@
     "multer" "1.4.4-lts.1"
     "tslib" "2.4.0"
 
-"@nestjs/platform-socket.io@^9.0.0", "@nestjs/platform-socket.io@^9.2.0":
-  "integrity" "sha512-ttxXtqHV3Cpk5AfZOxfE8urILV5oLBpG21vdyqUHiL0YDuhHdc2tBz5GKSYAfsWefmVeQQiBAV9dqaa23Rf0nQ=="
-  "resolved" "https://mirrors.cloud.tencent.com/npm/@nestjs%2fplatform-socket.io/-/platform-socket.io-9.2.0.tgz"
-  "version" "9.2.0"
+"@nestjs/platform-socket.io@^9.0.0":
+  "integrity" "sha512-McLXgmkNDvYhX4RcudpLa/RNvy7NA4vb+7gJxJ12yp189Ijcaoktrex1a4F7PPQ5iKACiI/D0rfvQAe9P1ez+g=="
+  "resolved" "https://mirrors.cloud.tencent.com/npm/@nestjs%2fplatform-socket.io/-/platform-socket.io-9.2.1.tgz"
+  "version" "9.2.1"
   dependencies:
     "socket.io" "4.5.3"
     "tslib" "2.4.1"
+
+"@nestjs/platform-ws@^9.2.1":
+  "integrity" "sha512-jk/3xljEPbPGXU8PXiRrXcTrXU2dXXEMaUoREyCPy09VPxXVYcGfvpz4u1oYMd9+uPGrMf7DQlO0xO2WDMWp7w=="
+  "resolved" "https://mirrors.cloud.tencent.com/npm/@nestjs%2fplatform-ws/-/platform-ws-9.2.1.tgz"
+  "version" "9.2.1"
+  dependencies:
+    "tslib" "2.4.1"
+    "ws" "8.11.0"
 
 "@nestjs/schematics@^9.0.0":
   "integrity" "sha512-kZrU/lrpVd2cnK8I3ibDb3Wi1ppl3wX3U3lVWoL+DzRRoezWKkh8upEL4q0koKmuXnsmLiu3UPxFeMOrJV7TSA=="
@@ -760,10 +768,10 @@
   dependencies:
     "uuid" "8.3.2"
 
-"@nestjs/websockets@^9.0.0", "@nestjs/websockets@^9.2.0":
-  "integrity" "sha512-AbG4eN9p9O6QmNSOWsk0lrA+CtHkrdDkogcl1sGyTrg+LRd6IUlkaTu9fFK9Hl6o7bs2ieGgDmxAvl+Xd156Aw=="
-  "resolved" "https://mirrors.cloud.tencent.com/npm/@nestjs%2fwebsockets/-/websockets-9.2.0.tgz"
-  "version" "9.2.0"
+"@nestjs/websockets@^9.0.0", "@nestjs/websockets@^9.2.1":
+  "integrity" "sha512-3VYyjLybobsWp6fPtOIGmZL83nV0nzqs+A2KoMf6PxVuFQeTT+BYJqbYE3I1D2wE9d9m81U1efpIeOuL8CXRAQ=="
+  "resolved" "https://mirrors.cloud.tencent.com/npm/@nestjs%2fwebsockets/-/websockets-9.2.1.tgz"
+  "version" "9.2.1"
   dependencies:
     "iterare" "1.2.1"
     "object-hash" "3.0.0"
@@ -5175,6 +5183,11 @@
   "integrity" "sha512-wBuoj1BDpC6ZQ1B7DWQBYVLphPWkm8i9Y0/3YdHjHKHiohOJ1ws+3OccDWtH+PoC9DZD5WOTrJvNbWvjS6JWaA=="
   "resolved" "https://mirrors.cloud.tencent.com/npm/ws/-/ws-8.2.3.tgz"
   "version" "8.2.3"
+
+"ws@8.11.0":
+  "integrity" "sha512-HPG3wQd9sNQoT9xHyNCXoDUa+Xw/VevmY9FoHyQ+g+rrMn4j6FB4np7Z0OhdTgjx6MgQLK7jwSy1YecU1+4Asg=="
+  "resolved" "https://mirrors.cloud.tencent.com/npm/ws/-/ws-8.11.0.tgz"
+  "version" "8.11.0"
 
 "xml2js@^0.4.23":
   "integrity" "sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug=="
