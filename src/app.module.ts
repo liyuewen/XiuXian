@@ -16,7 +16,9 @@ import { CharacterModule } from './modules/character/character.module';
 import { DaoModule } from './dao/dao.module';
 import { MailModule } from './modules/mail/mail.module';
 import { AdminModule } from './modules/admin/admin.module';
-import { SocketModule } from './modules/socket/socket.module';
+import { SocketModule } from './socket/socket.module';
+import { TasksModule } from './tasks/tasks.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -30,6 +32,8 @@ import { SocketModule } from './modules/socket/socket.module';
     MailModule,
     AdminModule,
     SocketModule,
+    TasksModule,
+    ScheduleModule.forRoot(),
     TypeOrmModule.forRoot(AppConfig.mysql),
   ],
   controllers: [AppController],

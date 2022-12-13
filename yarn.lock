@@ -694,7 +694,7 @@
     "webpack" "5.74.0"
     "webpack-node-externals" "3.0.0"
 
-"@nestjs/common@^8.0.0 || ^9.0.0", "@nestjs/common@^9.0.0":
+"@nestjs/common@^7.0.0 || ^8.0.0 || ^9.0.0", "@nestjs/common@^8.0.0 || ^9.0.0", "@nestjs/common@^9.0.0":
   "integrity" "sha512-9Ttk9va/BwEab36RSXLZdRoPUX3DZHUpzseKEfqHVhnaUIsIMt7lVd79GQ1FroQ2FZqoCwcLyBowevXhrE1Wnw=="
   "resolved" "https://mirrors.cloud.tencent.com/npm/@nestjs%2fcommon/-/common-9.1.6.tgz"
   "version" "9.1.6"
@@ -703,7 +703,7 @@
     "tslib" "2.4.0"
     "uuid" "9.0.0"
 
-"@nestjs/core@^8.0.0 || ^9.0.0", "@nestjs/core@^9.0.0":
+"@nestjs/core@^7.0.0 || ^8.0.0 || ^9.0.0", "@nestjs/core@^8.0.0 || ^9.0.0", "@nestjs/core@^9.0.0":
   "integrity" "sha512-B52nYYTDSH72f1DU0G14NQSPCviXRE9fCp2/gUHuWIfVfBwcmVBAxVgyB/jAIUAhhj1f5/2odwUiw194xYtRRA=="
   "resolved" "https://mirrors.cloud.tencent.com/npm/@nestjs%2fcore/-/core-9.1.6.tgz"
   "version" "9.1.6"
@@ -742,6 +742,14 @@
   dependencies:
     "tslib" "2.4.1"
     "ws" "8.11.0"
+
+"@nestjs/schedule@^2.1.0":
+  "integrity" "sha512-4Xaw56WiW3VsxEPPnj/iDtfjcO+sUZyYAeRxD0gnF5havncxjAnv52Iw7UH3DuzzUA784xPGgGje3Fq0Gu925g=="
+  "resolved" "https://mirrors.cloud.tencent.com/npm/@nestjs%2fschedule/-/schedule-2.1.0.tgz"
+  "version" "2.1.0"
+  dependencies:
+    "cron" "2.0.0"
+    "uuid" "8.3.2"
 
 "@nestjs/schematics@^9.0.0":
   "integrity" "sha512-kZrU/lrpVd2cnK8I3ibDb3Wi1ppl3wX3U3lVWoL+DzRRoezWKkh8upEL4q0koKmuXnsmLiu3UPxFeMOrJV7TSA=="
@@ -953,6 +961,14 @@
   "resolved" "https://mirrors.cloud.tencent.com/npm/@types%2fcors/-/cors-2.8.12.tgz"
   "version" "2.8.12"
 
+"@types/cron@^2.0.0":
+  "integrity" "sha512-xZM08fqvwIXgghtPVkSPKNgC+JoMQ2OHazEvyTKnNf7aWu1aB6/4lBbQFrb03Td2cUGG7ITzMv3mFYnMu6xRaQ=="
+  "resolved" "https://mirrors.cloud.tencent.com/npm/@types%2fcron/-/cron-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "@types/luxon" "*"
+    "@types/node" "*"
+
 "@types/crypto-js@^4.1.1":
   "integrity" "sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA=="
   "resolved" "https://mirrors.cloud.tencent.com/npm/@types%2fcrypto-js/-/crypto-js-4.1.1.tgz"
@@ -1037,6 +1053,11 @@
   "resolved" "https://mirrors.cloud.tencent.com/npm/@types%2fjson-schema/-/json-schema-7.0.11.tgz"
   "version" "7.0.11"
 
+"@types/luxon@*":
+  "integrity" "sha512-gCd/HcCgjqSxfMrgtqxCgYk/22NBQfypwFUG7ZAyG/4pqs51WLTcUzVp1hqTbieDYeHS3WoVEh2Yv/2l+7B0Vg=="
+  "resolved" "https://mirrors.cloud.tencent.com/npm/@types%2fluxon/-/luxon-3.1.0.tgz"
+  "version" "3.1.0"
+
 "@types/mime@*":
   "integrity" "sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA=="
   "resolved" "https://mirrors.cloud.tencent.com/npm/@types%2fmime/-/mime-3.0.1.tgz"
@@ -1099,6 +1120,13 @@
   "version" "2.0.12"
   dependencies:
     "@types/superagent" "*"
+
+"@types/ws@^8.5.3":
+  "integrity" "sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w=="
+  "resolved" "https://mirrors.cloud.tencent.com/npm/@types%2fws/-/ws-8.5.3.tgz"
+  "version" "8.5.3"
+  dependencies:
+    "@types/node" "*"
 
 "@types/yargs-parser@*":
   "integrity" "sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA=="
@@ -2013,6 +2041,13 @@
   "integrity" "sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ=="
   "resolved" "https://mirrors.cloud.tencent.com/npm/create-require/-/create-require-1.1.1.tgz"
   "version" "1.1.1"
+
+"cron@2.0.0":
+  "integrity" "sha512-RPeRunBCFr/WEo7WLp8Jnm45F/ziGJiHVvVQEBSDTSGu6uHW49b2FOP2O14DcXlGJRLhwE7TIoDzHHK4KmlL6g=="
+  "resolved" "https://mirrors.cloud.tencent.com/npm/cron/-/cron-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "luxon" "^1.23.x"
 
 "cross-spawn@^7.0.0", "cross-spawn@^7.0.2", "cross-spawn@^7.0.3":
   "integrity" "sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w=="
@@ -3637,6 +3672,11 @@
   "version" "6.0.0"
   dependencies:
     "yallist" "^4.0.0"
+
+"luxon@^1.23.x":
+  "integrity" "sha512-TfTiyvZhwBYM/7QdAVDh+7dBTBA29v4ik0Ce9zda3Mnf8on1S5KJI8P2jKFZ8+5C0jhmr0KwJEO/Wdpm0VeWJQ=="
+  "resolved" "https://mirrors.cloud.tencent.com/npm/luxon/-/luxon-1.28.0.tgz"
+  "version" "1.28.0"
 
 "macos-release@^2.5.0":
   "integrity" "sha512-EIgv+QZ9r+814gjJj0Bt5vSLJLzswGmSUbUpbi9AIr/fsN2IWFBl2NucV9PAiek+U1STK468tEkxmVYUtuAN3g=="

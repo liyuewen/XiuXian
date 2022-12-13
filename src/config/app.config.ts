@@ -8,6 +8,13 @@ interface AppConfigType {
     redis.RedisFunctions,
     redis.RedisScripts
   >;
+  http: {
+    port: number;
+  };
+  ws: {
+    port: number;
+    path: string;
+  };
 }
 
 export const AppConfig: AppConfigType = {
@@ -22,6 +29,13 @@ export const AppConfig: AppConfigType = {
     synchronize: true,
   },
   redis: {
-    url: 'redis://127.0.0.1:6379',
+    url: 'redis://127.0.0.1',
+  },
+  http: {
+    port: 3000,
+  },
+  ws: {
+    port: 3001,
+    path: '/socket',
   }
 };
